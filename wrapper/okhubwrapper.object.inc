@@ -91,19 +91,22 @@ class OkhubApiObject {
     }
     //title
     if (isset($object['title'])) {
+		if(is_array($object['title'])){
       foreach($object['title'] as $s=>$v){
       	if (!empty($v['en'][0])){      
       		$this->title = $v['en'][0];
       		break;
       	} 
-	if (!empty($v['fr'][0])){      
+		if (!empty($v['fr'][0])){      
       		$this->title = $v['fr'][0];
       		break;
       	} 
       }
+	  }
     }
     //titles
     if(isset($object['title'])){
+			if(is_array($object['title'])){
     	foreach($object['title'] as $s=>$v){
 		if (!empty($v['en'][0])){      
 			$this->titles[$s] = $v['en'][0];
@@ -112,6 +115,7 @@ class OkhubApiObject {
 			$this->titles[$s] = $v['fr'][0];
 		}
       	}
+		}
      }
     if (isset($object['timestamp'])) {
       $this->timestamp = $object['timestamp'];
