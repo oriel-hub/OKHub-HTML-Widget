@@ -7,7 +7,7 @@
 		$("#footer").hide();
 		var apikey,q="";
 		$("input[name=submit]").click(function(e){
-			var url = "http://opendataph.com/okhub/okhub_widget.js?type=search";
+			var url = "http://data.okhub.org/apps/widget/okhub_widget.js?type=search";
 			if ( $("input[name=apikey]").val() == "") {
 				alert("Please enter you API key");
 			}else{
@@ -76,6 +76,19 @@
 	</style>
 </head>
 <body>
+
+<?php include('/var/www/includes/nav.shtml'); ?>
+<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
+
+<style>
+/* Added by P.Mason, IDS */
+body { margin: 0; padding: 0;}
+#wrap { width: 980px; margin: 0 auto;}
+textarea { width: 100%; height: 400px; display: block; margin: 10px 0px; }
+#open-knowledge-hub-widget{ padding: 10px !important; background-color: #ee9; width: 25% !important; }
+</style>
+
+<div id="wrap">
 <?php
 /* search parameters */
 if (isset($_GET['type'])){
@@ -86,6 +99,7 @@ $valid_api_key = '5c96d95b-c729-4624-b1c2-14c6b98dc9ce';
 $okhubapi = new OkhubApiWrapper;
 $sources = array('opendocs','eldis','observaction','bridge','heart','pids','ccccc','ella','serpp');
 $object_types = array('themes','countries','regions','organisations','subjects');
+
 echo "<div style='width:100%;float:left;'><h2>OkHub Javascript Web Widget</h2>";
 echo "<p>Step 1. <a href='http://api.okhub.org/accounts/login/?next=/profiles/view/' target=_new>Register to get your API key</a>. The API key is required both on the widget and wrapper class.</p>";
 echo "<p>Step 2. Copy and Paste the code snippet below and replace  the {your-api-key} with your apikey.</p>";
@@ -137,5 +151,6 @@ $output .= "</tr></table></div>";
 echo $output;
 
 ?>
+</div> <!--wrap-->
 </body>
 </html>
