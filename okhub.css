@@ -61,7 +61,7 @@
 #okhub-close {
 	float:right;
 }
-ul{
+#open-knowledge-hub-widget-content ul{
 	margin:0;
 	padding:0;	
 }
@@ -76,11 +76,6 @@ ul.okhub_sources li{
 
 	
 }
-a {
-  color: blue;
-  text-decoration: none;
- 
-}
 
 ul.okhub_list li{
     list-style-type: none;
@@ -89,4 +84,13 @@ ul.okhub_list li{
     display:block;
     width:90%;
 	
+}
+
+#open-knowledge-hub-widget-header input {
+	width:100%
+}
+
+#open-knowledge-hub-widget-header h3 {
+	padding-top:0;
+	margin-top:0;
 }
