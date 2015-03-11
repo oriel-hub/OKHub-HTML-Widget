@@ -1,0 +1,6 @@
+#ignore ecipse project files
+.buildpath
+.project
+.settings
+.settings/*
+

@@ -1,7 +1,7 @@
 (function() {
 	//encodeURIComponent(window.location.href)
 	var jQuery;
-	var wrapper_url = "http://data.okhub.org/apps/widget/api2/";	
+	var wrapper_url = "http://opendataph.com/okhub/api2/";	
 	/******** Load jQuery if not present *********/
 	if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
 	    var script_tag = document.createElement('script');
@@ -32,11 +32,18 @@
 	/*get script tags and returns reference to our okhub_widget.js
 	will be used to get js parameters*/
 	function getScriptUrl() {
-		var scriptUrl = null;
-		jQuery('#dynamic-demo-hub-widget script').each(function(){
-			scriptUrl = $(this).attr('src');
-		});
-		return scriptUrl;
+		var scripts = document.getElementsByTagName('script'); 
+		var element;
+		var src;
+		for (var i = 0; i < scripts.length; i++) {
+			 element = scripts[i];
+			 src = element.src;	
+			 if (src && /opendataph\.com\/okhub\/okhub_widget\.js/.test(src)) {
+			 //if (src && /localhost\/okhub_wrapper\/okhub_widget\.js/.test(src)) {			 	 
+			 	 return src;		 	
+			 }
+		}
+		return null;
 	}	 
 	/*fetch parameters*/
 	function getQueryParameters(query) {
