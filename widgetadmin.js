@@ -6,6 +6,7 @@ $(document).ready(function(){
 		var jsurl = widgetadminurl + "okhub_widget.js?type=search";
 		if ( $("input[name=apikey]").val() != "") {
 			$(".step").show();
+			$(".step-intructions").hide();
 		}
 		
 		if($("input[name=apikey]").val() == "" && $(this).attr('name') == "apikeysubmit"){

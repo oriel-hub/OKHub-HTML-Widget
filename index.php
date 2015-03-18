@@ -24,19 +24,9 @@
 			<div id="main_container">
 	
 				<h2>OkHub Javascript Web Widget</h2>
+				
 				<div class="step" id="step1">
-				<p><span class="steptext">Step 1.</span> <a
-						href='http://api.okhub.org/accounts/login/?next=/profiles/view/'
-						target=_new>Register to get your API key</a>. The API key is required for the widget to work on your website.
-				</p>
-				<div class="form-item"><input type="text" name="apikey"
-						placeholder="Enter you API Key (this is required)"
-						style="width: 100%; height: 30px;" /></div> 
-				<div class="form-item form-submit"><input
-						type="submit" name="apikeysubmit" value="Submit API key" /></div>
-				</div>
-				<div class="step" id="step2">
-					<p><span class="steptext">Step 2.</span>  Customise the widget (optional)</p>
+					<p><span class="steptext">Step 1.</span>  Customise the widget (optional)</p>
 					<div class="form-item"><input type="text"
 						name="q" placeholder="Search Parameter e.g. Water"
 						style="width: 100%; height: 30px;" /></div>  
@@ -55,8 +45,24 @@
 						placeholder="Widget Background Colour e.g. red or #ff0000"
 						style="width: 100%; height: 30px;" /></div> 
 					<div class="form-item form-submit"><input
-						type="submit" name="customisesubmit" value="Customise" /></div>
+						type="submit" name="customisesubmit" value="Update" /></div>
 					<p class="note">Note: You can also use Boolean Logic for filtering results. For Search Parameter e.g. "Gender AND Climate". For Country/Region e.g. "India OR Namibia"</p>
+				</div>				
+				
+				<div class="step" id="step2">
+				<p><span class="steptext">Step 2.</span> <a
+						href='http://api.okhub.org/accounts/login/?next=/profiles/view/'
+						target=_new>Register to get your API key</a>. The API key is required for the widget to work on your website.
+				</p>
+				<div class="form-item"><input type="text" name="apikey"
+						placeholder="Enter you API Key (this is required)"
+						style="width: 100%; height: 30px;" /></div> 
+				<div class="form-item form-submit"><input
+						type="submit" name="apikeysubmit" value="Submit API key" /></div>
+				</div>
+				
+				<div class="step-intructions" id="step3-intructions">
+				 <p><span class="steptext">Step 3.</span> Your custom widget code will appear here once you have entered you API key above</p>
 				</div>
 				
 				<div class="step" id="step3">
