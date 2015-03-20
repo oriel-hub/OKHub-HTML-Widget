@@ -71,31 +71,64 @@
 		return p.join("&");
         }
        function hub_navigate(params){
-
         	jQuery('#open-knowledge-hub-widget-content').html("<center>Searching....</center>");
 		var pa = getOtherParams(params);
 		var jsonp_url=wrapper_url+"?type=search&source="+encodeURIComponent(window.location.href)+"&token_guid="+params._token_guid+"&start_offset="+params.start_offset+"&callback=?&"+pa; 				
 		var output ="<br/>";
 		var footer = "<br/>";
-		jQuery.getJSON(jsonp_url, function(data) {	
-		   if (typeof data.metadata.next_page !="undefined"){
-			   footer = footer + "<button id='okhub_next' style='float:right;'> Next >> </button>";
-		   }
+		jQuery.getJSON(jsonp_url, function(data) {
+		   var num_pages =50;
+		   var pages = num_pages + Number(params.start_offset);
+		   var counter =0;
 		   if (typeof data.metadata.prev_page !="undefined"){
-			   footer = footer + "<button id='okhub_prev' style='float:left;'> << Previous</button>";
+			   footer = footer + "<button id='okhub_prev'> << Previous</button>";			  
+		   }
+		   if (typeof data.metadata.next_page !="undefined"){
+		   	    /*pagination*/
+		   	    for (var i=Number(params.start_offset)+10;i<pages;i=i+10){
+			   	counter++;
+			   	if (counter < 5){
+			   		var page_id = "pageid_"+i;
+					footer = footer + "<button id="+page_id+">"+i/10+"</button>";
+			   	}
+			   }
+			   footer = footer + "<button id='okhub_next' > Next >> </button>";
 		   }
 		   footer = footer + "<br><br/><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
 		   output = output + "<center><h5>" +data.metadata.total_results +" search results:</h5></center>";
-		   okhub_results(output,data.results,params)
+		   if (typeof data.results !="undefined"){
+		   	   okhub_results(output,data.results,params)
+		   }else{
+		   	alert("Failed to connect to OKHub, please try again later...");
+		   	jQuery('#open-knowledge-hub-widget-content').html("<h4>Unable to connect to OKHub, please try again later...</h4>");
+		   	return false;
+		   }
 		   jQuery('#open-knowledge-hub-widget-footer').html(footer);
 		   jQuery('button#okhub_next').click(function(e){
-		       var qparams=getQueryParameters(data.metadata.next_page);	
+		       var qparams=getQueryParameters(data.metadata.next_page);
 		       hub_navigate(qparams);
 		   });
 		   jQuery('button#okhub_prev').click(function(e){
 		       var qparams=getQueryParameters(data.metadata.prev_page);	
 		       hub_navigate(qparams);
 		   });
+		   /*pagination buttons */
+		   var counter =0;
+		   if (typeof data.metadata.next_page !="undefined"){
+		   	   for (var j=Number(params.start_offset)+10;j<pages;j=j+10){
+			   	counter++;
+			  	if (counter < 5){
+			  		var pageid = "#pageid_"+j;
+			   		jQuery(pageid).click(function(e){			   			
+			   		       var off_set=Number(jQuery(this).text());
+					       off_set = off_set*10;
+					       var qparams=getQueryParameters(data.metadata.next_page);
+					       qparams['start_offset'] = off_set;
+					       hub_navigate(qparams);			   			
+			   		});
+			   	}
+			   }
+		   }
 		});           	
        }
        function hub_search(param,token_guid){
@@ -188,9 +221,15 @@
 		var eldis_theme,observaction_theme="";	
 		jQuery('#okhub-overlay').show();
 		jQuery.getJSON(jsonp_url, function(data) {
+		    if (typeof data.results == "undefined"){
+		    	   alert("Failed to connect to OKHub, please try again later...");
+		    	   okhub_clear_contents();
+			   jQuery('#open-knowledge-hub-widget-content').html("<h4>Unable to connect to OKHub, please try again later...</h4>");
+
+		    	   return false;
+		    }else{
 			jQuery.each(data.results,function(index,value){
-				for (var i in value){
-					
+				for (var i in value){					
 					title =value[i].title;
 					authors =value[i].authors;
 					url =value[i].url;
@@ -261,6 +300,7 @@
 			top:top + jQuery(window).scrollTop(), 
 			left:left + jQuery(window).scrollLeft()
 		    });
+		}
 		});		
         	jQuery('#okhub-close').click(function(e){
 			okhub_clear_contents();
@@ -313,7 +353,7 @@
 			    "<div id='okhub-content-header'></div>"+
 			    "<div id='okhub-content'></div>"+
 			    "<div id='okhub-content-footer'></div>"+
-			    "<a href='#' id='okhub-close'><button>close</button></a>"+
+			    "<a href='#' id='okhub-close'>X</a>"+
 			"</div>";
 		$('#open-knowledge-hub-widget').html(stru);
 		$('#okhub-overlay').hide();
@@ -341,11 +381,21 @@
 				var jsonp_url=wrapper_url+"?type="+params.type+"&source="+encodeURIComponent(window.location.href)+"&token_guid="+params._token_guid+"&callback=?"; 
 			}
 			var output ="";
-			var footer ="";
+			var footer ="<br/><div id='footer'>";
 			var metadata_url="";
-			$.getJSON(jsonp_url, function(data) {	
+			$.getJSON(jsonp_url, function(data) {
+			   var num_pages =50;
+			   var pages = num_pages;
+			   var counter =0;
 			   if (typeof data.metadata.next_page !="undefined"){
-			   	   footer = footer + "<br/><button id='okhub_next' style='float:right;'>Next>></button><br><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
+				    for (var i=10;i< pages;i=i+10){
+					counter++;
+					if (counter < 5){
+						var page_id = "pageid_"+i;
+						footer = footer + "<button id="+page_id+">"+i/10+"</button>";
+					}
+				   }
+			   	   footer = footer + "<button id='okhub_next'>Next >></button></div><br><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
 			   }
 			   if (params.q != undefined){
 			   	   output = output + "<h5>"+data.metadata.total_results +" search results for "+params.q+"</h5>";
@@ -353,12 +403,35 @@
 			   	   output = output + "<h5>"+data.metadata.total_results +" search results </h5>";
 			   	   
 			   }
-			   okhub_results(output, data.results,params);
-			$('#open-knowledge-hub-widget-footer').html(footer);
+			   if (typeof data.results != "undefined"){
+			   	   okhub_results(output,data.results,params);
+			   }else{
+			   	 alert("Failed to connect to OKHub, please try again later...");
+			   	 jQuery('#open-knowledge-hub-widget-content').html("<h4>Unable to connect to OKHub, please try again later...</h4>");
+			   	 return false;
+			   }
+			   $('#open-knowledge-hub-widget-footer').html(footer);
 			   $('button#okhub_next').click(function(e){			   	
 			       var qparams=getQueryParameters(data.metadata.next_page);
 			       hub_navigate(qparams);
-			   })			  
+			   })
+			   /*pagination buttons */
+			   var counter =0;
+			   if (typeof data.metadata.next_page !="undefined"){
+				   for (var j=10;j<pages;j=j+10){
+					counter++;
+					if (counter < 5){
+						var pageid = "#pageid_"+j;
+						jQuery(pageid).click(function(e){			   			
+						       var off_set=Number(jQuery(this).text());
+						       off_set = off_set*10;
+						       var qparams=getQueryParameters(data.metadata.next_page);
+						       qparams['start_offset'] = off_set;
+						       hub_navigate(qparams);			   			
+						});
+					}
+				   }
+			   }
 			});			
 		}
 	    });
