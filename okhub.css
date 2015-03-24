@@ -29,7 +29,7 @@
     border-radius:14px;
     padding:8px;
     width:500px;
-    min-height:500px;
+    /*min-height:500px;*/
 }
 #okhub-content-header {
     border-radius:8px;
@@ -113,4 +113,7 @@ ul.okhub_list li{
 #open-knowledge-hub-widget-header h3 {
 	padding-top:0;
 	margin-top:0;
+}
+.selected_button{
+	color: red;	
 }

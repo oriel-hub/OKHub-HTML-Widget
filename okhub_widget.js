@@ -66,7 +66,7 @@
 			p.push("country="+params.country);	
 		}
 		if (params.theme !== undefined){
-			p.push("theme="+params.themes);	
+			p.push("theme="+params.theme);	
 		}
 		return p.join("&");
         }
@@ -89,8 +89,13 @@
 			   	counter++;
 			   	if (counter < 5){
 			   		var page_id = "pageid_"+i;
-					footer = footer + "<button id="+page_id+">"+i/10+"</button>";
-			   	}
+			   		if (counter == 1){
+			   			footer = footer + "<button id="+page_id+" class='selected_button'>"+i/10+"</button>";
+			   			
+			   		}else{
+			   			footer = footer + "<button id="+page_id+">"+i/10+"</button>";
+					}
+				}
 			   }
 			   footer = footer + "<button id='okhub_next' > Next >> </button>";
 		   }
@@ -121,7 +126,7 @@
 			  		var pageid = "#pageid_"+j;
 			   		jQuery(pageid).click(function(e){			   			
 			   		       var off_set=Number(jQuery(this).text());
-					       off_set = off_set*10;
+					       off_set = off_set*10-10;
 					       var qparams=getQueryParameters(data.metadata.next_page);
 					       qparams['start_offset'] = off_set;
 					       hub_navigate(qparams);			   			
@@ -392,7 +397,12 @@
 					counter++;
 					if (counter < 5){
 						var page_id = "pageid_"+i;
-						footer = footer + "<button id="+page_id+">"+i/10+"</button>";
+						if (counter == 1){
+							footer = footer + "<button id="+page_id+" class='selected_button'>"+i/10+"</button>";
+							
+						}else{
+							footer = footer + "<button id="+page_id+">"+i/10+"</button>";
+						}
 					}
 				   }
 			   	   footer = footer + "<button id='okhub_next'>Next >></button></div><br><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
@@ -424,7 +434,7 @@
 						var pageid = "#pageid_"+j;
 						jQuery(pageid).click(function(e){			   			
 						       var off_set=Number(jQuery(this).text());
-						       off_set = off_set*10;
+						       off_set = off_set*10-10;
 						       var qparams=getQueryParameters(data.metadata.next_page);
 						       qparams['start_offset'] = off_set;
 						       hub_navigate(qparams);			   			
