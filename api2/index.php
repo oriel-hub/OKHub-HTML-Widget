@@ -5,7 +5,13 @@ if (isset($_GET['q'])){
 	$params['q']=$_GET['q'];
 }
 if (isset($_GET['country'])){
-	$params['country'] = $_GET['country'];	
+	$p = explode(",",$_GET['country']);
+	if (count($p) > 1){
+		//%7C -OR, %26 - AND
+		$params['country'] = implode("%7C", $p);
+	}else{
+		$params['country'] = $_GET['country'];
+	}
 }
 if (isset($_GET['theme'])){
 	$params['theme'] = $_GET['theme'];	

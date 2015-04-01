@@ -3,10 +3,12 @@
 	<head>
 		<title>OKhub Web Widget Customisation</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.tokeninput.js"/></script>
 		<?php include('/var/www/includes/nav.shtml'); ?>
 		<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
 		<link href="http://data.okhub.org/sites/all/themes/skeletontheme/css/style.css" rel="stylesheet" type="text/css">
+		 <link rel="stylesheet" href="css/token-input.css" type="text/css" />
 		<link href="okhub.css" rel="stylesheet" type="text/css">
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
@@ -42,11 +44,9 @@
 						name="q" placeholder="Search Parameter e.g. Water"
 
 						style="" /></div>  
+					<div class="form-item">
+					<input type="text" id="cntry" name="country" placeholder="Country/Region e.g. India" style="" /></div> 
 					<div class="form-item"><input type="text"
-						name="country" placeholder="Country/Region e.g. India"
-
-						style="" /></div> 
-					<div class="form-item" style="display:none;"><input type="text"
 						name="theme" placeholder="Theme e.g. Education" style="" /></div> 
 					<div class="form-item"><input type="text" name="widget_title"
 						placeholder="Title for the Widget e.g. Development Resources"
