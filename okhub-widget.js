@@ -132,9 +132,19 @@
 								}
 								footer = footer
 										+ "<br><br/><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
+
+								var searchfeedbacktext = '';
+								if (params.q != undefined) {
+									searchfeedbacktext = 
+											" search results for "
+											+ params.q;
+								} else {
+									searchfeedbacktext = " search results";
+								}								
 								output = output + "<center><h5>"
 										+ data.metadata.total_results
-										+ " search results:</h5></center>";
+										+ searchfeedbacktext
+										+ "</h5></center>";
 								if (typeof data.results != "undefined") {
 									okhub_results(output, data.results, params)
 								} else {
@@ -475,124 +485,8 @@
 											});
 							/* displays search results */
 							if (params.type == "search") {
-								var pa = getOtherParams(params);
-								if (pa !== undefined) {
-									var jsonp_url = okhub_wrapper_api_url
-											+ "?type="
-											+ params.type
-											+ "&source="
-											+ encodeURIComponent(window.location.href)
-											+ "&token_guid="
-											+ params._token_guid
-											+ "&callback=?&" + pa;
-								} else {
-									var jsonp_url = okhub_wrapper_api_url
-											+ "?type="
-											+ params.type
-											+ "&source="
-											+ encodeURIComponent(window.location.href)
-											+ "&token_guid="
-											+ params._token_guid
-											+ "&callback=?";
-								}
-								var output = "";
-								var footer = "<br/><div id='footer'>";
-								var metadata_url = "";
-								$
-										.getJSON(
-												jsonp_url,
-												function(data) {
-													var num_pages = 50;
-													var pages = num_pages;
-													var counter = 0;
-													if (typeof data.metadata.next_page != "undefined") {
-														for ( var i = 10; i < pages; i = i + 10) {
-															counter++;
-															if (counter < 5) {
-																var page_id = "pageid_"
-																		+ i;
-																if (counter == 1) {
-																	footer = footer
-																			+ "<button id="
-																			+ page_id
-																			+ " class='selected_button'>"
-																			+ i
-																			/ 10
-																			+ "</button>";
-
-																} else {
-																	footer = footer
-																			+ "<button id="
-																			+ page_id
-																			+ ">"
-																			+ i
-																			/ 10
-																			+ "</button>";
-																}
-															}
-														}
-														footer = footer
-																+ "<button id='okhub_next'>Next >></button></div><br><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
-													}
-													if (params.q != undefined) {
-														output = output
-																+ "<h5>"
-																+ data.metadata.total_results
-																+ " search results for "
-																+ params.q
-																+ "</h5>";
-													} else {
-														output = output
-																+ "<h5>"
-																+ data.metadata.total_results
-																+ " search results </h5>";
-
-													}
-													if (typeof data.results != "undefined") {
-														okhub_results(output,
-																data.results,
-																params);
-													} else {
-														alert("Failed to connect to OKHub, please try again later...");
-														jQuery(
-																'#open-knowledge-hub-widget-content')
-																.html(
-																		"<h4>Unable to connect to OKHub, please try again later...</h4>");
-														return false;
-													}
-													$(
-															'#open-knowledge-hub-widget-footer')
-															.html(footer);
-													$('button#okhub_next')
-															.click(
-																	function(e) {
-																		var qparams = getQueryParameters(data.metadata.next_page);
-																		hub_navigate(qparams);
-																	})
-													/* pagination buttons */
-													var counter = 0;
-													if (typeof data.metadata.next_page != "undefined") {
-														for ( var j = 10; j < pages; j = j + 10) {
-															counter++;
-															if (counter < 5) {
-																var pageid = "#pageid_"
-																		+ j;
-																jQuery(pageid)
-																		.click(
-																				function(
-																						e) {
-																					var off_set = Number(jQuery(
-																							this)
-																							.text());
-																					off_set = off_set * 10 - 10;
-																					var qparams = getQueryParameters(data.metadata.next_page);
-																					qparams['start_offset'] = off_set;
-																					hub_navigate(qparams);
-																				});
-															}
-														}
-													}
-												});
+								params.start_offset = 0;
+								hub_navigate(params);
 							}
 						});
 	}
