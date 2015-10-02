@@ -1,7 +1,7 @@
 (function() {
 	/* encodeURIComponent(window.location.href) */
 	var jQuery;
-	var okhub_wrapper_api_url = "http://data.okhub.org/apps/widget2/api/";
+	var okhub_wrapper_api_url = "http://data.okhub.org/apps/widget/api/";
 	/** ****** Load jQuery if not present ******** */
 	if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
 		var script_tag = document.createElement('script');
