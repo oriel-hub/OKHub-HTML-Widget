@@ -17,7 +17,7 @@ if (isset($_GET['start_offset'])){
 }
 $id = ( isset($_GET['id']) ? $_GET['id'] : '');
 $type = $_GET['type']; // type, either search, get, get_all
-require_once('../wrapper/wrapper/okhubwrapper.wrapper.inc');
+require_once('../wrapper/okhubwrapper.wrapper.inc');
 $valid_api_key = $_GET['token_guid'];
 $okhubapi = new OkhubApiWrapper;
 $sources_options = $okhubapi->okhubapi_get_sources_options($valid_api_key);
