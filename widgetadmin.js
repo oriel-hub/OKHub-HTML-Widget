@@ -50,7 +50,7 @@ $(document).ready(function(){
 		}
 		
 		$("#results1").val("");
-		$("#results1").val('<link href="' + widgetadminurl + 'okhub.css" rel="stylesheet" type="text\/css">' + customstyles + '<script src="' + url + '" type="text\/javascript"><\/script><div id="open-knowledge-hub-widget"><\/div>');
+		$("#results1").val('<link href="' + widgetadminurl + 'okhub-widget.css" rel="stylesheet" type="text\/css">' + customstyles + '<script src="' + url + '" type="text\/javascript"><\/script><div id="open-knowledge-hub-widget"><\/div>');
 		$("#dynamic-demo-hub-widget script").each(function(){
 			$(this).attr('src', url2);
 		});
