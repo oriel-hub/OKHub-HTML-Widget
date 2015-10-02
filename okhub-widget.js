@@ -83,7 +83,7 @@
 	
 	function hub_navigate(params) {
 		jQuery('#open-knowledge-hub-widget-content').html(
-				"<center>Searching....</center>");
+				"<div class='okhub-widget-message'>Searching....</div>");
 		var pa = getOtherParams(params);
 		var jsonp_url = okhub_wrapper_api_url + "?type=search&source="
 				+ encodeURIComponent(window.location.href) + "&token_guid="
@@ -141,10 +141,10 @@
 								} else {
 									searchfeedbacktext = " search results";
 								}								
-								output = output + "<center><h5>"
+								output = output + "<div class='okhub-widget-message'><h5>"
 										+ data.metadata.total_results
 										+ searchfeedbacktext
-										+ "</h5></center>";
+										+ "</h5></div>";
 								if (typeof data.results != "undefined") {
 									okhub_results(output, data.results, params)
 								} else {
@@ -199,7 +199,7 @@
 		params.q = param;
 		params.start_offset = 0;
 		jQuery('#open-knowledge-hub-widget-content').html(
-		"<center>Searching xx....</center>");
+		"<div class='okhub-widget-message'>Searching ....</div>");
 		hub_navigate(params);
 	}
 	
