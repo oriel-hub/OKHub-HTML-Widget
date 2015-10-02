@@ -446,7 +446,8 @@
 							var params = getQueryParameters(scr);
 
 							/** ***** Load HTML ****** */
-							var stru = "<div id='open-knowledge-hub-widget-header' style='width:100%;height:10%;'></div>"
+							var stru = "<div id='open-knowledge-hub-widget-inner'>"
+									+ "<div id='open-knowledge-hub-widget-header' style='width:100%;height:10%;'></div>"
 									+ "<div id='open-knowledge-hub-widget-content' style='padding-right:10px;margin:0px;width:100%;height:80%;overflow-y:scroll;'></div>"
 									+ "<div id='open-knowledge-hub-widget-footer' style='width:100%;height:10%;'></div>"
 									+ "<div id='okhub-overlay'></div>"
@@ -455,6 +456,7 @@
 									+ "<div id='okhub-content'></div>"
 									+ "<div id='okhub-content-footer'></div>"
 									+ "<a href='#' id='okhub-close'>X</a>"
+									+ "</div>"
 									+ "</div>";
 							$('#open-knowledge-hub-widget').html(stru);
 							$('#okhub-overlay').hide();
@@ -464,7 +466,7 @@
 							}
 							var header = "<h3>"
 									+ params.widget_title
-									+ "</h3><input type='text' name='okhub_search' placeholder='Search' style='float:right;'>"
+									+ "</h3><input type='text' name='okhub_search' placeholder='Search'>"
 									+ "<input type='hidden' name='okhub_token_guid' value="
 									+ params._token_guid + ">";
 							$('#open-knowledge-hub-widget-header').html(header);
