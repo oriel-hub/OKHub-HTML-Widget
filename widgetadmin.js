@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var apikey,q="";
 	var demoapikey = '5c96d95b-c729-4624-b1c2-14c6b98dc9ce';
 	$("input[type=submit]").click(function(e){
-		var jsurl = widgetadminurl + "okhub_widget.js?type=search";
+		var jsurl = widgetadminurl + "okhub-widget.js?type=search";
 		if ( $("input[name=apikey]").val() != "") {
 			$(".step").show();
 			$(".step-intructions").hide();
