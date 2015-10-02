@@ -1,7 +1,7 @@
 (function() {
 	/* encodeURIComponent(window.location.href) */
 	var jQuery;
-	var wrapper_url = "http://data.okhub.org/apps/widget2/api/";
+	var okhub_wrapper_api_url = "http://data.okhub.org/apps/widget2/api/";
 	/** ****** Load jQuery if not present ******** */
 	if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
 		var script_tag = document.createElement('script');
@@ -85,7 +85,7 @@
 		jQuery('#open-knowledge-hub-widget-content').html(
 				"<center>Searching....</center>");
 		var pa = getOtherParams(params);
-		var jsonp_url = wrapper_url + "?type=search&source="
+		var jsonp_url = okhub_wrapper_api_url + "?type=search&source="
 				+ encodeURIComponent(window.location.href) + "&token_guid="
 				+ params._token_guid + "&start_offset=" + params.start_offset
 				+ "&callback=?&" + pa;
@@ -182,7 +182,7 @@
 		params['_token_guid'] = token_guid;
 		jQuery('#open-knowledge-hub-widget-content').html(
 				"<center>Searching....</center>");
-		var jsonp_url = wrapper_url + "?type=search&q=" + param
+		var jsonp_url = okhub_wrapper_api_url + "?type=search&q=" + param
 				+ "&token_guid=" + token_guid + "&source="
 				+ encodeURIComponent(window.location.href) + "&callback=?";
 		var output = "<br/>";
@@ -230,7 +230,7 @@
 		} else {
 			var q1 = args[1];
 		}
-		var jsonp_url = wrapper_url + "?type=search2&param1=" + type
+		var jsonp_url = okhub_wrapper_api_url + "?type=search2&param1=" + type
 				+ "&param2=" + q1 + "&token_guid=" + params.token_guid
 				+ "&source=" + encodeURIComponent(window.location.href)
 				+ "&callback=?";
@@ -306,7 +306,7 @@
 	function okhub_details(id, guid) {
 		var top, left;
 		var args = id.split('_');/* split parameter */
-		var jsonp_url = wrapper_url + "?type=details&id=" + args[1]
+		var jsonp_url = okhub_wrapper_api_url + "?type=details&id=" + args[1]
 				+ "&token_guid=" + guid + "&source="
 				+ encodeURIComponent(window.location.href) + "&callback=?";
 		var output = "";
@@ -579,7 +579,7 @@
 							if (params.type == "search") {
 								var pa = getOtherParams(params);
 								if (pa !== undefined) {
-									var jsonp_url = wrapper_url
+									var jsonp_url = okhub_wrapper_api_url
 											+ "?type="
 											+ params.type
 											+ "&source="
@@ -588,7 +588,7 @@
 											+ params._token_guid
 											+ "&callback=?&" + pa;
 								} else {
-									var jsonp_url = wrapper_url
+									var jsonp_url = okhub_wrapper_api_url
 											+ "?type="
 											+ params.type
 											+ "&source="

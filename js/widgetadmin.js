@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var apikey,q="";
 	var demoapikey = '5c96d95b-c729-4624-b1c2-14c6b98dc9ce';
 	$("input[type=submit]").click(function(e){
-		var jsurl = widgetadminurl + "okhub-widget.js?type=search";
+		var jsurl = okhub_wrapper_url + "okhub-widget.js?type=search";
 		if ( $("input[name=apikey]").val() != "") {
 			$(".step").show();
 			$(".step-intructions").hide();
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		}
 		
 		$("#results1").val("");
-		$("#results1").val('<link href="' + widgetadminurl + 'okhub-widget.css" rel="stylesheet" type="text\/css">' + customstyles + '<script src="' + url + '" type="text\/javascript"><\/script><div id="open-knowledge-hub-widget"><\/div>');
+		$("#results1").val('<link href="' + okhub_wrapper_url + 'okhub-widget.css" rel="stylesheet" type="text\/css">' + customstyles + '<script src="' + url + '" type="text\/javascript"><\/script><div id="open-knowledge-hub-widget"><\/div>');
 		$("#dynamic-demo-hub-widget script").each(function(){
 			$(this).attr('src', url2);
 		});
