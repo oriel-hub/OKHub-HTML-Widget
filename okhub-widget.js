@@ -112,18 +112,20 @@
 									for ( var i = Number(params.start_offset) + 10; i < pages; i = i + 10) {
 										counter++;
 										if (counter < 5) {
-											var page_id = "pageid_" + i;
-											if (counter == 1) {
-												footer = footer
-														+ "<button id="
-														+ page_id
-														+ " class='selected_button'>"
-														+ i / 10 + "</button>";
-	
-											} else {
-												footer = footer + "<button id="
-														+ page_id + ">" + i / 10
-														+ "</button>";
+											if((counter * 10) <= data.metadata.total_results - params.start_offset){
+												var page_id = "pageid_" + i;
+												if (counter == 1) {
+													footer = footer
+															+ "<button id="
+															+ page_id
+															+ " class='selected_button'>"
+															+ i / 10 + "</button>";
+		
+												} else {
+													footer = footer + "<button id="
+															+ page_id + ">" + i / 10
+															+ "</button>";
+												}
 											}
 										}
 									}
