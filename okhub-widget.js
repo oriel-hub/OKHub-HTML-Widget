@@ -250,6 +250,10 @@
 														year = value[i].publication_year;
 														publisher = value[i].publisher;
 														version = i;
+														object_id = value[i].object_id;
+														if(jQuery.isArray(url)){
+															url = url[0];
+														}
 														break;
 													}
 													var source_cnt = 0;
