@@ -41,8 +41,8 @@
 	
 	function getScriptUrl() {
 		var scriptUrl = null;
-		jQuery('#dynamic-demo-hub-widget script').each(function() {
-			scriptUrl = $(this).attr('src');
+		jQuery('script.okhub-widget-script').each(function() {
+			scriptUrl = jQuery(this).attr('src');
 		});
 		return scriptUrl;
 	}

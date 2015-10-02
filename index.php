@@ -23,7 +23,7 @@
 		<div id="okhub-widget">
 
 			<div id="dynamic-demo-hub-widget">
-				<script src="<?php echo $widget_url; ?>okhub-widget.js?type=search&_token_guid=50ae9726-efa9-4b40-a623-85823df5aac2" type="text/javascript"></script>
+				<script class="okhub-widget-script" src="<?php echo $widget_url; ?>okhub-widget.js?type=search&_token_guid=50ae9726-efa9-4b40-a623-85823df5aac2" type="text/javascript"></script>
 				<div id="open-knowledge-hub-widget">Sample Widget</div>
 			</div>
 			<div id="open-knowledge-hub-widget-main-container">
