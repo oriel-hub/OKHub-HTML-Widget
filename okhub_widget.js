@@ -1,7 +1,7 @@
 (function() {
-	//encodeURIComponent(window.location.href)
+	/*encodeURIComponent(window.location.href)*/
 	var jQuery;
-	var wrapper_url = "http://data.okhub.org/apps/widget/api2/";	
+	var wrapper_url = "http://data.okhub.org/apps/widget2/api/";	
 	/******** Load jQuery if not present *********/
 	if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
 	    var script_tag = document.createElement('script');
@@ -16,10 +16,10 @@
 	    } else {
 	      script_tag.onload = scriptLoadHandler;
 	    }
-	    // Try to find the head, otherwise default to the documentElement
+	    /* Try to find the head, otherwise default to the documentElement */
 	    (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
 	} else {
-	    // The jQuery version on the window is the one we want to use
+	    /* The jQuery version on the window is the one we want to use */
 	    jQuery = window.jQuery;
 	    main();
 	}
@@ -40,8 +40,8 @@
 	}	 
 	/*fetch parameters*/
 	function getQueryParameters(query) {
-	    var args1   = query.split('?');//split uri
-	    var args = args1[1].split('&');//split parameter
+	    var args1   = query.split('?');/*split uri*/
+	    var args = args1[1].split('&');/*split parameter*/
 	    var params = {};
 	    var pair;
 	    var key;
@@ -73,7 +73,7 @@
        function hub_navigate(params){
         	jQuery('#open-knowledge-hub-widget-content').html("<center>Searching....</center>");
 		var pa = getOtherParams(params);
-		var jsonp_url=wrapper_url+"?type=search&source="+encodeURIComponent(window.location.href)+"&token_guid="+params._token_guid+"&start_offset="+params.start_offset+"&callback=?&"+pa; 				
+		var jsonp_url=wrapper_url+"?type=search&source="+encodeURIComponent(window.location.href)+"&token_guid="+params._token_guid+"&start_offset="+params.start_offset+"&callback=?&"+pa; 			
 		var output ="<br/>";
 		var footer = "<br/>";
 		jQuery.getJSON(jsonp_url, function(data) {
@@ -217,7 +217,7 @@
 	}
         function okhub_details(id,guid){
          	var top, left;
-        	var args = id.split('_');//split parameter
+        	var args = id.split('_');/*split parameter*/
 		var jsonp_url=wrapper_url+"?type=details&id="+args[1]+"&token_guid="+guid+"&source="+encodeURIComponent(window.location.href)+"&callback=?"; 
 		var output ="";
 		var footer ="<ul class='okhub_sources'>";
@@ -244,10 +244,18 @@
 					version = i;
 					break;
 				}
+				var source_cnt = 0;
 				for (var i in value){
+					source_cnt++;
 					footer = footer +"<li id=oksource_"+i+"><a href='#'>"+i.toUpperCase()+"</a></li> ";
 				}
-				jQuery('#okhub-content-footer').html(footer+"</ul>");
+				if(source_cnt > 1){
+					footer = "<h5>Other sources</h5>" + footer;
+					jQuery('#okhub-content-footer').html(footer+"</ul>");
+					jQuery('#okhub-content-footer').show();
+				} else {
+					jQuery('#okhub-content-footer').hide();
+				}
 				for (var i in value){
 					jQuery("#oksource_"+i).click(function(e){
 						var ii = e.currentTarget.id.split("_");
@@ -259,40 +267,46 @@
 						year = value[k].publication_year;
 						publisher = value[k].publisher;
 						headertitle = "<h3><a href='"+url+"' target=_new>"+title+"</a></h3>";				
-						if (authors !== null){
+						if (authors){
 							headertitle = headertitle+authors;	
 						}
 						
-						if (publisher !== null){
+						if (publisher){
 							headertitle = headertitle + "<br/><i>" +publisher+ "</i>";	
 						}
-						if (year !== null){
+						if (year){
 							headertitle = headertitle + " (" +year+ ")";	
 						}
 						headertitle = headertitle + "<br/>Source: "+k.toUpperCase();
 						jQuery('#okhub-content-header').html(headertitle);
-						if (description != null){
-							jQuery('#okhub-content').html("<p>"+description+"</p>");		
+						if (description){
+							jQuery('#okhub-content').show();
+							jQuery('#okhub-content').html("<p>"+description+"</p>");
+						} else {
+							jQuery('#okhub-content').hide();
 						}
 							
 					});
 				} 
 				headertitle = "<h3><a href='"+url+"' target=_new>"+title+"</a></h3>";				
-				if (authors !== null){
+				if (authors){
 					headertitle = headertitle+authors;	
 				}
-				if (publisher !== null){
+				if (publisher){
 					headertitle = headertitle + "<br/><i>" +publisher+ "</i>";	
 				}
-				if (year !== null){
+				if (year){
 					headertitle = headertitle + " (" +year+ ")";	
 				}
-				if (version !== null){
+				if (version){
 					headertitle = headertitle + "<br/>Source: "+version.toUpperCase();	
 				}
 				jQuery('#okhub-content-header').html(headertitle);
-				if (description != null){
+				if (description){
+					jQuery('#okhub-content').show();
 					jQuery('#okhub-content').html("<p>"+description+"</p>");		
+				} else {
+					jQuery('#okhub-content').hide();
 				}
 			
 		});

@@ -3,12 +3,13 @@
 	margin: 0 auto;
 }
 #okhub-widget {
-	padding:0; margin: 20px 0;
+	padding:0; 
+	margin: 20px 0;
 	width:100% !important;
 	clear: both;
 }
 #open-knowledge-hub-widget { width: 100%; float: none; background-color: #eee; }
-#open-knowledge-hub-widget-main-container {width: 69%;}
+#open-knowledge-hub-widget-main-container {width: 65%;}
 #dynamic-demo-hub-widget {
 	width: 30%;
 	padding: 0; margin: 0;

@@ -38,8 +38,7 @@
     padding-right:20px;
     padding-top:2px;
     padding-bottom:2px;
-
-
+    margin-bottom:10px;
 }
 #okhub-content {
     border-radius:8px;
@@ -50,6 +49,7 @@
     overflow-y:scroll;
 }
 #okhub-content-footer {
+	margin-top:10px;
     border-radius:8px;
     background:#fff;
     padding-left:20px;

@@ -1,29 +1,37 @@
 <?php
-$okhubSearchURL = "http://api.okhub.org/v1/hub/search/documents/full/?_token_guid=".$_GET['token_guid']."&format=json";
-$param=$_GET['param'];
-$start_offset = $_GET['start_offset'];
-if ($_GET['type'] == "search"){
-	$url = $okhubSearchURL."&q=".$param;
+/* search parameters */
+$params = array();
+if (isset($_GET['q'])){
+	$params['q']=$_GET['q'];
 }
-if ($_GET['type'] == "navigate"){
-	$url = $okhubSearchURL."&q=".$param."&start_offset=".$start_offset;	
+if (isset($_GET['country'])){
+	$params['country'] = $_GET['country'];	
 }
-if ($_GET['type'] == "navigate2"){
-	$url = $okhubSearchURL."&".$_GET['param1']."=".$_GET['param2']."&start_offset=".$start_offset;	
+if (isset($_GET['theme'])){
+	$params['theme'] = $_GET['theme'];	
 }
-if ($_GET['type'] == "details"){
-	$url="http://api.okhub.org/v1/hub/get/documents/".$param."/full/?format=json&_token_guid=".$_GET['token_guid'];
-}
-if ($_GET['type'] == "search2"){
-	$url = $okhubSearchURL."&".$_GET['param1']."=".$_GET['param2'];
-		
-}
-if ($url != ""){
-	$documents = file_get_contents($url);
-	header("Content-type: application/javascript");
-	$callback = $_GET['callback'];
-	echo "$callback($documents);";
+if (isset($_GET['start_offset'])){
+	$start_offset = $_GET['start_offset'];	
 }else{
-	echo "Wrapper class for Widget";	
+	$start_offset = 0;
 }
+$id = ( isset($_GET['id']) ? $_GET['id'] : '');
+$type = $_GET['type']; // type, either search, get, get_all
+require_once('../wrapper/wrapper/okhubwrapper.wrapper.inc');
+$valid_api_key = $_GET['token_guid'];
+$okhubapi = new OkhubApiWrapper;
+$sources_options = $okhubapi->okhubapi_get_sources_options($valid_api_key);
+$sources = array_keys($sources_options);
+if ($type == "search"){
+	$response = $okhubapi->search('documents', 'hub', $valid_api_key, 'full', 10, 0, $start_offset, $params);
+	$json = json_encode($response->getArrayTitles());
+}
+if ($type == "details"){
+	$response = $okhubapi->get('documents', 'hub', $valid_api_key, 'full', $id);
+	$json = json_encode($response->getDocumentVersion($sources));
+}
+header("Content-type: application/javascript");
+$callback = $_GET['callback'];
+
+echo "$callback($json);";
 ?>

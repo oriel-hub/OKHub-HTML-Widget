@@ -1,2 +1,0 @@
-[02-Jan-2015 08:46:54 America/New_York] PHP Warning:  file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Filename cannot be empty in /home/innobmzy/public_html/opendataph.com/okhub/api/index.php on line 14
-[02-Jan-2015 08:46:54 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/innobmzy/public_html/opendataph.com/okhub/api/index.php:14) in /home/innobmzy/public_html/opendataph.com/okhub/api/index.php on line 15

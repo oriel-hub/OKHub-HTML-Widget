@@ -3,12 +3,10 @@
 	<head>
 		<title>OKhub Web Widget Customisation</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.tokeninput.js"/></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<?php include('/var/www/includes/nav.shtml'); ?>
 		<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
 		<link href="http://data.okhub.org/sites/all/themes/skeletontheme/css/style.css" rel="stylesheet" type="text/css">
-		 <link rel="stylesheet" href="css/token-input.css" type="text/css" />
 		<link href="okhub.css" rel="stylesheet" type="text/css">
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
@@ -30,7 +28,7 @@
 			</div>
 			<div id="open-knowledge-hub-widget-main-container">
 	
-				<h2>OKHub Javascript Web Widget</h2>
+				<h2>OKhub Web Widget</h2>
 								
 				<div class="text_container">
 					<p><strong>Want to easily give your users the chance to search through 1000's of freely accessible research documents on poverty reduction in the developing world, from the OKHub content providers?</strong></p>
@@ -44,8 +42,10 @@
 						name="q" placeholder="Search Parameter e.g. Water"
 
 						style="" /></div>  
-					<div class="form-item">
-					<input type="text" id="cntry" name="country" placeholder="Country/Region e.g. India" style="" /></div> 
+					<div class="form-item"><input type="text"
+						name="country" placeholder="Country/Region e.g. India"
+
+						style="" /></div> 
 					<div class="form-item"><input type="text"
 						name="theme" placeholder="Theme e.g. Education" style="" /></div> 
 					<div class="form-item"><input type="text" name="widget_title"
@@ -85,7 +85,7 @@
 				<div class="step" id="step3">
 					<p><span class="steptext">Step 3.</span> Copy and Paste the code snippet below and add to your website.</p>
 					<textarea style='width: 100%; height: 100px;' id='results1' disabled>&nbsp;</textarea>
-					<p class="note">Note: The widget is supplied with a link to our standard stylesheet. You can overwrite these on your site.</p>
+					<p class="note">Note: The widget is supplied with a link to our standard stylesheet. You can overwrite this on your site.</p>
 				</div>
 				
 
