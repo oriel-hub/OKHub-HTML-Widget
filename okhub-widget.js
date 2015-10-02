@@ -178,38 +178,13 @@
 	}
 	
 	function hub_search(param, token_guid) {
-		var params = [];
-		params['_token_guid'] = token_guid;
+		var params = {};
+		params._token_guid = token_guid;
+		params.q = param;
+		params.start_offset = 0;
 		jQuery('#open-knowledge-hub-widget-content').html(
-				"<center>Searching....</center>");
-		var jsonp_url = okhub_wrapper_api_url + "?type=search&q=" + param
-				+ "&token_guid=" + token_guid + "&source="
-				+ encodeURIComponent(window.location.href) + "&callback=?";
-		var output = "<br/>";
-		var footer = "<br/>";
-		jQuery
-				.getJSON(
-						jsonp_url,
-						function(data) {
-							if (typeof data.metadata.next_page != "undefined") {
-								footer = footer
-										+ "<button id='okhub_next' style='float:right;'>Next >> </button><br><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
-							}
-							output = output + "<center><h5>"
-									+ data.metadata.total_results
-									+ " search results for " + params
-									+ "</h5></center>";
-							okhub_results(output, data.results, params)
-							jQuery('#open-knowledge-hub-widget-footer').html(
-									footer);
-							jQuery('button#okhub_next')
-									.click(
-											function(e) {
-												var qparams = getQueryParameters(data.metadata.next_page);
-
-												hub_navigate(qparams);
-											});
-						});
+		"<center>Searching xx....</center>");
+		hub_navigate(params);
 	}
 	
 	function okhub_clear_contents() {
