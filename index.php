@@ -8,14 +8,14 @@
 		<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
 		<link href="http://data.okhub.org/sites/all/themes/skeletontheme/css/style.css" rel="stylesheet" type="text/css">
 		<link href="okhub-widget.css" rel="stylesheet" type="text/css">
-		<link href="style.css" rel="stylesheet" type="text/css">
+		<link href="css/widgetadmin.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
 			var widgetadminurl = '<?php 
 			$widget_url = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 			echo $widget_url;
 			?>';
 		</script>
-		<script type="text/javascript" src="widgetadmin.js"></script>
+		<script type="text/javascript" src="js/widgetadmin.js"></script>
 	</head>
 	<body>
 
