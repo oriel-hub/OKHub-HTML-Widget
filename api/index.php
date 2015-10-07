@@ -28,10 +28,14 @@ if ($type == "search"){
 }
 if ($type == "details"){
 	$response = $okhubapi->get('documents', 'hub', $valid_api_key, 'full', $id);
-	$json = json_encode($response->getDocumentVersion($sources));
+	$details_obj = new stdClass();
+	$details_obj->data = $response->getDocumentVersion($sources);
+	$details_obj->sources = $sources_options;
+	$json = json_encode($details_obj);
 }
-header("Content-type: application/javascript");
 $callback = $_GET['callback'];
+
+header("Content-type: application/javascript");
 
 echo "$callback($json);";
 ?>

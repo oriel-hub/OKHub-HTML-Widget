@@ -27,12 +27,20 @@
     left:10px;
     background:rgba(0,0,0,0.2);
     border-radius:14px;
-    padding:8px;
+	height:90%;
     width:500px;
+    padding:8px
     /*min-height:500px;*/
 }
+
+#okhub-modal-inner {
+	background-color:#fff;
+    border-radius:14px;
+    width:100%;
+    height:100%;
+}
+
 #okhub-content-header {
-    border-radius:8px;
     background:#fff;
     padding-left:20px;
     padding-right:20px;
@@ -40,12 +48,17 @@
     padding-bottom:2px;
     margin-bottom:10px;
 }
+
+#okhub-content-tabs {
+    background:#fff;
+    padding-left:20px;
+    padding-right:20px;	
+}
+
 #okhub-content {
-    border-radius:8px;
     background:#fff;
     padding:20px;
-    padding-top:2px;
-    max-height:425px;
+	 max-height:75%;
     overflow-y:scroll;
 }
 #okhub-content-footer {
@@ -87,25 +100,22 @@
 	height:400px;
 	min-height:400px;
 }
-ul.okhub_sources li{
-    list-style-type: none;
-    margin-right:5px;
-    padding: 0;
-    display:inline;
-    width:40px;
-    background-color:yellow;
-    font-size:10px;
 
-	
+#okhub-content-tabs ul {
+	list-style: none;
+	padding:0;
+	margin:0;
 }
 
-ul.okhub_list li{
-    list-style-type: none;
-    margin-top:10px;
-    padding: 0;
-    display:block;
-    width:90%;
-	
+#okhub-content-tabs li {
+	display: inline;
+	border: solid;
+	border-width: 1px 1px 0 1px;
+	margin: 0 0.5em 0 0;
+}
+
+#okhub-content-tabs li a {
+	padding: 0 1em;
 }
 
 #open-knowledge-hub-widget-header input {

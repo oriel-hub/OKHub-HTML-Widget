@@ -210,7 +210,7 @@
 		jQuery('#okhub-modal').hide();
 		jQuery('#okhub-content-header').empty();
 		jQuery('#okhub-content').empty();
-		jQuery('#okhub-content-footer').empty();
+		jQuery('#okhub-content-tabs').empty();
 	}
 	
 	function okhub_details(id, guid) {
@@ -220,7 +220,7 @@
 				+ "&token_guid=" + guid + "&source="
 				+ encodeURIComponent(window.location.href) + "&callback=?";
 		var output = "";
-		var footer = "<ul class='okhub_sources'>";
+		var sources_tabs = "";
 		var metadata_url = "";
 		var title, author, description, url, hub_country, hubcountry = "";
 		var eldis_theme, observaction_theme = "";
@@ -229,8 +229,10 @@
 				.getJSON(
 						jsonp_url,
 						function(data) {
+							sourcesData = data.sources;
+							data = data.data;
 							if (typeof data.results == "undefined") {
-								alert("Failed to connect to OKHub, please try again later...");
+								//alert("Failed to connect to OKHub, please try again later...");
 								okhub_clear_contents();
 								jQuery('#open-knowledge-hub-widget-content')
 										.html(
@@ -259,7 +261,7 @@
 													var source_cnt = 0;
 													for ( var i in value) {
 														source_cnt++;
-														footer = footer
+														sources_tabs = sources_tabs
 																+ "<li id=oksource_"
 																+ i
 																+ "><a href='#'>"
@@ -268,19 +270,16 @@
 																+ "</a></li> ";
 													}
 													if (source_cnt > 1) {
-														footer = "<h5>Other sources</h5>"
-																+ footer;
+														sources_tabs = "<ul class='okhub_sources'>" + sources_tabs + "</ul>";
 														jQuery(
-																'#okhub-content-footer')
-																.html(
-																		footer
-																				+ "</ul>");
+																'#okhub-content-tabs')
+																.html(sources_tabs);
 														jQuery(
-																'#okhub-content-footer')
+																'#okhub-content-tabs')
 																.show();
 													} else {
 														jQuery(
-																'#okhub-content-footer')
+																'#okhub-content-tabs')
 																.hide();
 													}
 													for ( var i in value) {
@@ -321,8 +320,7 @@
 																			}
 																			headertitle = headertitle
 																					+ "<br/>Source: "
-																					+ k
-																							.toUpperCase();
+																					+ sourcesData[k];
 																			jQuery(
 																					'#okhub-content-header')
 																					.html(
@@ -369,8 +367,7 @@
 													if (version) {
 														headertitle = headertitle
 																+ "<br/>Source: "
-																+ version
-																		.toUpperCase();
+																+ sourcesData[version];
 													}
 													jQuery(
 															'#okhub-content-header')
@@ -457,12 +454,12 @@
 									+ "<div id='open-knowledge-hub-widget-content' style='padding-right:10px;margin:0px;width:100%;height:80%;overflow-y:scroll;'></div>"
 									+ "<div id='open-knowledge-hub-widget-footer' style='width:100%;height:10%;'></div>"
 									+ "<div id='okhub-overlay'></div>"
-									+ "<div id='okhub-modal'>"
+									+ "<div id='okhub-modal'><div id='okhub-modal-inner'>"
 									+ "<div id='okhub-content-header'></div>"
+									+ "<div id='okhub-content-tabs'></div>"
 									+ "<div id='okhub-content'></div>"
-									+ "<div id='okhub-content-footer'></div>"
 									+ "<a href='#' id='okhub-close'>X</a>"
-									+ "</div>"
+									+ "</div></div>"
 									+ "</div>";
 							$('#open-knowledge-hub-widget').html(stru);
 							$('#okhub-overlay').hide();
