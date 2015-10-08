@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	$("#footer").hide();
 	var apikey,q="";
 	var demoapikey = '5c96d95b-c729-4624-b1c2-14c6b98dc9ce';
 	$("input[type=submit]").click(function(e){
@@ -64,8 +63,7 @@ $(document).ready(function(){
 		$(this).css("cursor","hand");		
 	});
 	$("#step5").click(function(e){
-		$(this).hide();
-		$("#footer").show();		
+		$(this).hide();	
 			
 	});
 });

@@ -4,8 +4,10 @@
 		<title>OKhub Web Widget Customisation</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<?php include('/var/www/includes/nav.shtml'); ?>
+		
 		<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
+		<link href="http://explorer.okhub.org/css/main.css" rel="stylesheet" type="text/css">
+		
 		<link href="http://data.okhub.org/sites/all/themes/skeletontheme/css/style.css" rel="stylesheet" type="text/css">
 		<link href="okhub-widget.css" rel="stylesheet" type="text/css">
 		<link href="css/widgetadmin.css" rel="stylesheet" type="text/css">
@@ -18,7 +20,7 @@
 		<script type="text/javascript" src="js/widgetadmin.js"></script>
 	</head>
 	<body>
-
+	<?php include('/var/www/includes/nav.shtml'); ?>
 	<div id="wrap">
 		<div id="okhub-widget">
 
@@ -95,6 +97,6 @@
 			</div>
 		</div>
 	</div><!--wrap-->
-
+	<?php include('/var/www/includes/footer.shtml'); ?>
 	</body>
 </html>
