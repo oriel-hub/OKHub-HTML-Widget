@@ -36,58 +36,61 @@
 					<p><strong>Why not create a widget for your site today?</strong></p>
 				</div>
 				
-				<div class="step" id="step1">
-					<p><span class="steptext">Step 1.</span>  Customise the widget (optional)</p>
-					<div class="form-item"><input type="text"
-						name="q" placeholder="Search Parameter e.g. Water"
-
-						style="" /></div>  
-					<div class="form-item"><input type="text"
-						name="country" placeholder="Country/Region e.g. India"
-
-						style="" /></div> 
-					<div class="form-item"><input type="text"
-						name="theme" placeholder="Theme e.g. Education" style="" /></div> 
-					<div class="form-item"><input type="text" name="widget_title"
-						placeholder="Title for the Widget e.g. Development Resources"
-
-						style="" /></div> 
-					<div class="form-item"><input type="text" name="text_color"
-						placeholder="Widget Text Colour e.g. red or #ff0000"
-
-						style="" /></div> 
-					<div class="form-item"><input type="text" name="background_color"
-						placeholder="Widget Background Colour e.g. red or #ff0000"
-
-						style="" /></div> 
+				<form id="customise_widget_form" action="#">
+				
+					<div class="step" id="step1">
+						<p><span class="steptext">Step 1.</span>  Customise the widget (optional)</p>
+						<div class="form-item"><input type="text"
+							name="q" placeholder="Search Parameter e.g. Water"
+	
+							style="" /></div>  
+						<div class="form-item"><input type="text"
+							name="country" placeholder="Country/Region e.g. India"
+	
+							style="" /></div> 
+						<div class="form-item"><input type="text"
+							name="theme" placeholder="Theme e.g. Education" style="" /></div> 
+						<div class="form-item"><input type="text" name="widget_title"
+							placeholder="Title for the Widget e.g. Development Resources"
+	
+							style="" /></div> 
+						<div class="form-item"><input type="text" name="text_color"
+							placeholder="Widget Text Colour e.g. red or #ff0000"
+	
+							style="" /></div> 
+						<div class="form-item"><input type="text" name="background_color"
+							placeholder="Widget Background Colour e.g. red or #ff0000"
+	
+							style="" /></div> 
+						<div class="form-item form-submit"><input
+							type="submit" name="customisesubmit" value="Update" /></div>
+						<p class="note">Note: You can also use Boolean Logic for filtering results. For Search Parameter e.g. "Gender AND Climate". For Country/Region e.g. "India OR Namibia"</p>
+					</div>				
+					
+					<div class="step" id="step2">
+					<p><span class="steptext">Step 2.</span> <a
+							href='http://api.okhub.org/accounts/login/?next=/profiles/view/'
+							target=_new>Register to get your API key</a>. The API key is required for the widget to work on your website.
+					</p>
+					<div class="form-item"><input type="text" name="apikey"
+							placeholder="Enter you API Key (this is required)"
+	
+							style="" /></div> 
 					<div class="form-item form-submit"><input
-						type="submit" name="customisesubmit" value="Update" /></div>
-					<p class="note">Note: You can also use Boolean Logic for filtering results. For Search Parameter e.g. "Gender AND Climate". For Country/Region e.g. "India OR Namibia"</p>
-				</div>				
+							type="submit" name="apikeysubmit" value="Submit API key" /></div>
+					</div>
+					
+					<div class="step-intructions" id="step3-intructions">
+					 <p><span class="steptext">Step 3.</span> Your custom widget code will appear here once you have entered you API key above</p>
+					</div>
+					
+					<div class="step" id="step3">
+						<p><span class="steptext">Step 3.</span> Copy and Paste the code snippet below and add to your website.</p>
+						<textarea style='width: 100%; height: 100px;' id='results1' disabled>&nbsp;</textarea>
+						<p class="note">Note: The widget is supplied with a link to our standard stylesheet. You can overwrite this on your site.</p>
+					</div>
 				
-				<div class="step" id="step2">
-				<p><span class="steptext">Step 2.</span> <a
-						href='http://api.okhub.org/accounts/login/?next=/profiles/view/'
-						target=_new>Register to get your API key</a>. The API key is required for the widget to work on your website.
-				</p>
-				<div class="form-item"><input type="text" name="apikey"
-						placeholder="Enter you API Key (this is required)"
-
-						style="" /></div> 
-				<div class="form-item form-submit"><input
-						type="submit" name="apikeysubmit" value="Submit API key" /></div>
-				</div>
-				
-				<div class="step-intructions" id="step3-intructions">
-				 <p><span class="steptext">Step 3.</span> Your custom widget code will appear here once you have entered you API key above</p>
-				</div>
-				
-				<div class="step" id="step3">
-					<p><span class="steptext">Step 3.</span> Copy and Paste the code snippet below and add to your website.</p>
-					<textarea style='width: 100%; height: 100px;' id='results1' disabled>&nbsp;</textarea>
-					<p class="note">Note: The widget is supplied with a link to our standard stylesheet. You can overwrite this on your site.</p>
-				</div>
-				
+				</form>
 
 			</div>
 		</div>
