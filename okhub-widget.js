@@ -254,11 +254,10 @@
 													sources_tabs = '';
 													for ( var i in value) {
 														source_cnt++;
-														sources_tabs +=
-																"<li id=oksource_"
+														sources_tabs += "<li id=oksource_"
 																+ i
 																+ " class='oksource_tab";
-														if(source_cnt == 1){
+														if (source_cnt == 1) {
 															sources_tabs += ' selected';
 														}
 														sources_tabs += "'>"
@@ -280,24 +279,43 @@
 																.click(
 																		function(
 																				e) {
-																			jQuery('.oksource_tab').removeClass('selected');
-																			
+																			jQuery(
+																					'.oksource_tab')
+																					.removeClass(
+																							'selected');
+
 																			var ii = e.currentTarget.id
 																					.split("_");
 																			var k = ii[1];
-																			jQuery('#oksource_' + k).addClass('selected');
+																			jQuery(
+																					'#oksource_'
+																							+ k)
+																					.addClass(
+																							'selected');
 																			title = value[k].title;
 																			authors = value[k].authors;
-																			url = value[k].url;
+																			firsturl = url = value[k].url;
+																			doclinks = '';
 																			if (jQuery
 																					.isArray(url)) {
-																				url = url[0];
+																				firsturl = url[0];
+																				for(dl in url){
+																					doclinks += "<li><a href='" + url[dl] + "'>" + url[dl] + "</a></li>";
+																				}
+																			}
+																			if(!doclinks){
+																				if(firsturl){
+																					doclinks += "<li><a href='" + firsturl + "'>" + firsturl + "</a></li>";
+																				}
+																			}
+																			if(doclinks){
+																				doclinks = "<ul class='okhubdoclinks'>" + doclinks + "</ul>";
 																			}
 																			description = value[k].description;
 																			year = value[k].publication_year;
 																			publisher = value[k].publisher;
 																			headertitle = "<h3><a href='"
-																					+ url
+																					+ firsturl
 																					+ "' target=_new>"
 																					+ title
 																					+ "</a></h3>";
@@ -325,21 +343,17 @@
 																					'#okhub-content-header')
 																					.html(
 																							headertitle);
-																			if (description) {
-																				jQuery(
-																						'#okhub-content')
-																						.show();
-																				jQuery(
-																						'#okhub-content')
-																						.html(
-																								"<p>"
-																										+ description
-																										+ "</p>");
-																			} else {
-																				jQuery(
-																						'#okhub-content')
-																						.hide();
-																			}
+																			if(!description){description='';}
+																			jQuery(
+																					'#okhub-content')
+																					.html(
+																							"<div class='abstract-text'>"
+																									+ description
+																									+ "</div>"
+																									+ "<div class='full-doc-links'>"
+																									+ doclinks
+																									+ "</div>"
+																										);
 
 																		});
 													}
