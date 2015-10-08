@@ -46,7 +46,9 @@ $(document).ready(function(){
 		url2 = url2 + urlparams;
 		
 		if(customstyles) {
-			customstyles = '<style>' + customstyles + '</style>';
+			customstyles = '<style class="widgetcustomstyles">' + customstyles + '</style>';
+		} else {
+			$('.widgetcustomstyles').remove();
 		}
 		
 		$("#results1").val("");
