@@ -336,9 +336,6 @@
 																						+ year
 																						+ ")";
 																			}
-																			headertitle = headertitle
-																					+ "<br/>Source: "
-																					+ sourcesData[k];
 																			jQuery(
 																					'#okhub-content-header')
 																					.html(
@@ -365,11 +362,6 @@
 														break;
 													}
 
-													if (source_cnt < 2) {
-														jQuery(
-																'#okhub-content-tabs')
-																.hide();
-													}
 
 												});
 
