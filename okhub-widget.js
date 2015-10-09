@@ -428,9 +428,9 @@
 
 							/** ***** Load HTML ****** */
 							var stru = "<div id='open-knowledge-hub-widget-inner'>"
-									+ "<div id='open-knowledge-hub-widget-header' style='width:100%;height:10%;'></div>"
-									+ "<div id='open-knowledge-hub-widget-content' style='padding-right:10px;margin:0px;width:100%;height:80%;overflow-y:scroll;'></div>"
-									+ "<div id='open-knowledge-hub-widget-footer' style='width:100%;height:10%;'></div>"
+									+ "<div id='open-knowledge-hub-widget-header'></div>"
+									+ "<div id='open-knowledge-hub-widget-content'></div>"
+									+ "<div id='open-knowledge-hub-widget-footer'></div>"
 									+ "<div id='okhub-overlay'></div>"
 									+ "<div id='okhub-modal'><div id='okhub-modal-inner'>"
 									+ "<div id='okhub-content-header'></div>"

@@ -84,6 +84,25 @@
 #okhub-close:hover {
     background: #00d9ff;
 }
+
+#open-knowledge-hub-widget-header {
+	width:100%;
+	height:10%;		
+}
+
+#open-knowledge-hub-widget-content {
+	padding-right:10px;
+	margin:0px;
+	width:100%;
+	height:80%;
+	overflow-y:scroll;
+}
+
+#open-knowledge-hub-widget-footer {
+	width:100%;
+	height:10%;	
+}
+
 #open-knowledge-hub-widget-content ul{
 	margin:0;
 	padding:0;	
