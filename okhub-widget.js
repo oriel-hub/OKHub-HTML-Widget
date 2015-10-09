@@ -1,7 +1,7 @@
 (function() {
 	/* encodeURIComponent(window.location.href) */
 	var jQuery;
-	var okhub_wrapper_api_url = "http://data.okhub.org/apps/widget/api/";
+	var okhub_wrapper_api_url = "http://data.okhub.org/apps/widget-test/api/";
 	/** ****** Load jQuery if not present ******** */
 	if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
 		var script_tag = document.createElement('script');
@@ -356,7 +356,7 @@
 													}
 													for ( var i in value) {
 														/* load first tab */
-														$("#oksource_" + i)
+														jQuery("#oksource_" + i)
 																.trigger(
 																		"click");
 														break;
@@ -386,8 +386,8 @@
 		output = output + "<ul  class='okhub_list'>";
 		jQuery.each(titles, function(index, value) {
 			if (value.title != null) {
-				output = output + "<li id='okhub_" + index
-						+ "' style='cursor:hand;'>" + value.title;
+				output = output + "<li><a id='okhub_" + index
+						+ "' href='#'>" + value.title + "</a>";
 				if (typeof value.publisher == "object") {
 					for (n in value.publisher) {
 						output = output + ", <i>" + value.publisher[n]
@@ -411,8 +411,8 @@
 		jQuery('#open-knowledge-hub-widget-content').html(output);
 		jQuery.each(titles, function(index, value) {
 			jQuery("#okhub_" + index).click(function(e) {
-				jQuery(this).css("color", "gray");
 				okhub_details(e.currentTarget.id, params._token_guid);
+				return false;
 			});
 		});
 
