@@ -137,7 +137,7 @@
 											+ "<button id='okhub_next' > Next >> </button>";
 								}
 								footer = footer
-										+ "<br><br/><img src='http://serp-p.pids.gov.ph/home/images/okhub-logo200.png' style='height:20px;'/>";
+										+ "<div class='okhub-widget-logo-link'><a href='http://www.okhub.org' target='_blank'><img src='http://data.okhub.org/apps/widget/images/okhub-logo200.png'/></a></div>";
 
 								var searchfeedbacktext = '';
 								if (params.q != undefined) {
@@ -326,9 +326,9 @@
 
 																			if (publisher) {
 																				headertitle = headertitle
-																						+ "<br/><i>"
+																						+ "<div class='okhub-widget-info-publisher'>"
 																						+ publisher
-																						+ "</i>";
+																						+ "</div>";
 																			}
 																			if (year) {
 																				headertitle = headertitle
@@ -390,8 +390,8 @@
 						+ "' href='#'>" + value.title + "</a>";
 				if (typeof value.publisher == "object") {
 					for (n in value.publisher) {
-						output = output + ", <i>" + value.publisher[n]
-								+ "</i> ";
+						output = output + ", <div class='okhub-widget-info-publisher'>" + value.publisher[n]
+								+ "</div> ";
 						break;
 					}
 				}
