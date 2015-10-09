@@ -89,8 +89,8 @@
 		+ encodeURIComponent(window.location.href) + "&token_guid="
 		+ params._token_guid + "&start_offset=" + params.start_offset
 		+ "&callback=?&" + pa;
-	var output = "<br/>";
-	var footer = "<br/>";
+	var output = "";
+	var footer = "";
 	jQuery
 		.getJSON(
 			jsonp_url,
@@ -98,7 +98,7 @@
 			    if (!data.metadata.total_results) {
 				jQuery('#open-knowledge-hub-widget-content')
 					.html(
-						"<h4>No results found for search criteria...</h4>");
+						"<div class='okhub-widget-message'><h5>No results found for search criteria...</h5></div>");
 			    } else {
 				var num_pages = 50;
 				var pages = num_pages
@@ -140,9 +140,18 @@
 					+ "<div class='okhub-widget-logo-link'><a href='http://www.okhub.org' target='_blank'><img src='http://data.okhub.org/apps/widget/images/okhub-logo200.png'/></a></div>";
 
 				var searchfeedbacktext = '';
-				if (params.q != undefined) {
-				    searchfeedbacktext = " search results for "
-					    + params.q;
+				if (params.q != undefined || params.country != undefined || params.theme != undefined) {
+				    searchfeedbacktext = '';
+				    	if (params.q != undefined) {
+				    	    searchfeedbacktext += params.q;
+				    	}
+					if (params.country != undefined) {
+					    searchfeedbacktext += ' in ' + params.country;
+					}
+					if (params.theme != undefined) {
+					    searchfeedbacktext += ' with the theme ' + params.theme;
+					}
+					searchfeedbacktext = " search results for " + searchfeedbacktext;
 				} else {
 				    searchfeedbacktext = " search results";
 				}
@@ -161,7 +170,7 @@
 				    return false;
 				}
 				jQuery('#open-knowledge-hub-widget-footer')
-					.html(footer);
+					.html("<div class='okhub-footer-inner'>" + footer + "</div>");
 				jQuery('button#okhub_next')
 					.click(
 						function(e) {
@@ -241,7 +250,7 @@
 				okhub_clear_contents();
 				jQuery('#open-knowledge-hub-widget-content')
 					.html(
-						"<h4>Unable to connect to OKHub, please try again later...</h4>");
+						"<div class='okhub-widget-message'><h5>Unable to connect to OKHub, please try again later...</h5></div>");
 
 				return false;
 			    } else {
@@ -461,7 +470,7 @@
 			    }
 			    var header = "<h3>"
 				    + params.widget_title
-				    + "</h3><input type='text' name='okhub_search' placeholder='Search'>"
+				    + "</h3><input type='text' name='okhub_search' placeholder='Search OKhub'>"
 				    + "<input type='hidden' name='okhub_token_guid' value="
 				    + params._token_guid + ">";
 			    $('#open-knowledge-hub-widget-header').html(header);
