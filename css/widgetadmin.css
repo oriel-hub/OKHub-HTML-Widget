@@ -1,3 +1,13 @@
+#open-knowledge-hub-widget{	
+	right:20px;
+	top:10px;
+	width:20%;
+	font-size:13px;
+	color: #2b2b2b;
+	font-family: Lato, sans-serif;
+	line-height: 1.25;
+	border:1px dotted gray;
+}
 #wrap {
 	width: 980px;
 	margin: 0 auto;
