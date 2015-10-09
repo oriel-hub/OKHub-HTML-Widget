@@ -3,8 +3,9 @@
 	<head>
 		<title>OKhub Web Widget Customisation</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 		<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
 		<link href="http://explorer.okhub.org/css/main.css" rel="stylesheet" type="text/css">
 		
@@ -17,9 +18,29 @@
 			echo $widget_url;
 			?>';
 		</script>
+		<script type='text/javascript'>
+		<?php
+		require_once('wrapper/okhubwrapper.wrapper.inc');
+		$demo_api_key = '5c96d95b-c729-4624-b1c2-14c6b98dc9ce';
+		$okhubapi = new OkhubApiWrapper;
+		$countries_options = $okhubapi->count('documents', 'hub', $demo_api_key, 'country', 0, array());
+		//print_r($countries_options);
+		$hub_countries_array = array();
+		foreach($countries_options->results as $country_obj){
+			$country_name = $country_obj->hub_data['object_name'];
+			$hub_countries_array[$country_name] = ucwords($country_name);
+		}		
+		$js_array = json_encode($hub_countries_array);
+		echo "var demoapikey = '$demo_api_key';\n";
+		echo "var hub_countries_array = ". $js_array . ";\n";
+		?>
+		</script>
 		<script type="text/javascript" src="js/widgetadmin.js"></script>
+		<script type="text/javascript" src="js/jquery.select-to-autocomplete.js"></script>
+		<script type="text/javascript" src="js/countryselect.js"></script>
 	</head>
 	<body>
+
 	<?php include('/var/www/includes/nav.shtml'); ?>
 	<div id="wrap">
 		<div id="okhub-widget">

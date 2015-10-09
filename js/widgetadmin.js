@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	var apikey,q="";
-	var demoapikey = '5c96d95b-c729-4624-b1c2-14c6b98dc9ce';
 	$("input[type=submit]").click(function(e){
 		var jsurl = okhub_wrapper_url + "okhub-widget.js?type=search";
 		if ( $("input[name=apikey]").val() != "") {
@@ -21,8 +20,12 @@ $(document).ready(function(){
 			q = $("input[name=q]").val();
 			urlparams = urlparams +"&q="+q;
 		}
-		if ( $("input[name=country]").val() !== "") {
+		if ( $("input[name=country]").val() !== "" && $("input[name=country]").val() != undefined && $("input[name=country]").val() != "undefined") {
 			q = $("input[name=country]").val();
+			urlparams = urlparams +"&country="+q;
+		}
+		if ( $("select[name=country]").val() !== "" && $("select[name=country]").val() != undefined && $("select[name=country]").val() != "undefined") {
+			q = $("select[name=country]").val();
 			urlparams = urlparams +"&country="+q;
 		}
 		if ( $("input[name=theme]").val() !== "") {
@@ -40,7 +43,7 @@ $(document).ready(function(){
 		if ( $("input[name=text_color").val() !== "") {
 			customcolor = $("input[name=text_color").val();
 			customstyles += ' #open-knowledge-hub-widget { color: ' + customcolor + '; } ';
-		}
+		}	
 		url = url + urlparams;
 		url2 = url2 + urlparams;
 		
