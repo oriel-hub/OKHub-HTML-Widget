@@ -295,17 +295,18 @@
 																			title = value[k].title;
 																			authors = value[k].authors;
 																			firsturl = url = value[k].url;
+																			firsturl = firsturl.trim()
 																			doclinks = '';
 																			if (jQuery
 																					.isArray(url)) {
 																				firsturl = url[0];
 																				for(dl in url){
-																					doclinks += "<li><a href='" + url[dl] + "'>" + url[dl] + "</a></li>";
+																					doclinks += "<li><a target='_blank' href='" + url[dl].trim() + "'>" + url[dl].trim() + "</a></li>";
 																				}
 																			}
 																			if(!doclinks){
 																				if(firsturl){
-																					doclinks += "<li><a href='" + firsturl + "'>" + firsturl + "</a></li>";
+																					doclinks += "<li><a target='_blank' href='" + firsturl + "'>" + firsturl + "</a></li>";
 																				}
 																			}
 																			if(doclinks){
