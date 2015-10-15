@@ -17,8 +17,9 @@
     left:10px;
     background:rgba(0,0,0,0.2);
     border-radius:14px;
-	height:90%;
-    width:500px;
+	height:75%;
+	width:90%;
+    max-width:600px;
     padding:8px
     /*min-height:500px;*/
 }
