@@ -304,8 +304,6 @@
 									    title = value[k].title;
 									    authors = value[k].authors;
 									    firsturl = url = value[k].url;
-									    firsturl = firsturl
-										    .trim()
 									    doclinks = '';
 									    if (jQuery
 										    .isArray(url)) {
@@ -313,10 +311,8 @@
 										for (dl in url) {
 										    doclinks += "<li><a target='_blank' href='"
 											    + url[dl]
-												    .trim()
 											    + "'>"
 											    + url[dl]
-												    .trim()
 											    + "</a></li>";
 										}
 									    }
