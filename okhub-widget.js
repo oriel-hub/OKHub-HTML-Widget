@@ -88,6 +88,7 @@
 	var jsonp_url = okhub_wrapper_api_url + "?type=search&source="
 		+ encodeURIComponent(window.location.href) + "&token_guid="
 		+ params._token_guid + "&start_offset=" + params.start_offset
+		+ '&sort_desc=date_created'
 		+ "&callback=?&" + pa;
 	var output = "";
 	var footer = "";

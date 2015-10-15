@@ -10,6 +10,12 @@ if (isset($_GET['country'])){
 if (isset($_GET['theme'])){
 	$params['theme'] = $_GET['theme'];	
 }
+if (isset($_GET['sort_desc'])){
+	$params['sort_desc'] = $_GET['sort_desc'];	
+}
+if (isset($_GET['sort_asc'])){
+	$params['sort_asc'] = $_GET['sort_asc'];	
+}
 if (isset($_GET['start_offset'])){
 	$start_offset = $_GET['start_offset'];	
 }else{
