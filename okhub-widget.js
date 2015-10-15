@@ -357,8 +357,8 @@
 									    }
 									    jQuery(
 										    '#okhub-content-header')
-										    .html(
-											    headertitle);
+										    .html( "<div id='okhub-content-header-inner'>" +
+											    headertitle + "</div>");
 									    if (!description) {
 										description = '';
 									    }

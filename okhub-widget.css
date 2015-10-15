@@ -49,7 +49,7 @@
 #okhub-content {
     background:#fff;
     padding:20px;
-	 max-height:75%;
+	 max-height:68%;
     overflow-y:scroll;
 }
 #okhub-content-footer {
@@ -172,5 +172,8 @@
 	padding-top:1em;
 }
 .okhub-widget-message {
+	padding-top:1em;
+}
+#okhub-content-header-inner {
 	padding-top:1em;
 }
