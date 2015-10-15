@@ -29,7 +29,7 @@ $okhubapi = new OkhubApiWrapper;
 $sources_options = $okhubapi->okhubapi_get_sources_options($valid_api_key);
 $sources = array_keys($sources_options);
 if ($type == "search"){
-	$response = $okhubapi->search('documents', 'hub', $valid_api_key, 'full', 10, 0, $start_offset, $params);
+	$response = $okhubapi->search('documents', 'hub', $valid_api_key, 'short', 10, 0, $start_offset, $params);
 	$json = json_encode($response->getArrayTitles());
 }
 if ($type == "details"){
