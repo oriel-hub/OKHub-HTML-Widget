@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/tokenize/jquery.tokenize.js"></script>
+		<link href="js/tokenize/jquery.tokenize.css" rel="stylesheet" type="text/css">	
 		<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
 		<link href="http://explorer.okhub.org/css/main.css" rel="stylesheet" type="text/css">
 		

@@ -11,6 +11,7 @@ $(document).ready(
 							'<select id="country" name="country" placeholder="Country/Region e.g. India">'
 									+ country_options + '</select>');
 					$('#country').selectToAutocomplete();
+					/*$('#country').tokenize();*/
 				}
 
 		});
