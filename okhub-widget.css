@@ -10,6 +10,7 @@
     background: #000;
     opacity: 0.5;
     filter: alpha(opacity=50);
+    z-index:10000;
 }
 #okhub-modal {
     position:absolute;
@@ -20,7 +21,8 @@
 	height:75%;
 	width:90%;
     max-width:600px;
-    padding:8px
+    padding:8px;
+    z-index:10001;
     /*min-height:500px;*/
 }
 
