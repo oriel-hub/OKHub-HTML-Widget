@@ -60,6 +60,7 @@ $(document).ready(function(){
 		});
 		$.getScript( url2 );
 		$("#dynamic-demo-hub-widget script").append(customstyles);
+		e.preventDefault();
 		return false;
 	});
 	$("#step5").mouseover(function(e){

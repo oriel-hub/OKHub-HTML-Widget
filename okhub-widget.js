@@ -443,56 +443,58 @@
     function main() {
 	jQuery(document)
 		.ready(
-			function($) {
-			    var scr = getScriptUrl();
-			    var params = getQueryParameters(scr);
-
-			    /** ***** Load HTML ****** */
-			    var modal_html = "<div id='okhub-overlay'></div>"	
-			    + "<div id='okhub-modal'><div id='okhub-modal-inner'>"
-			    + "<div id='okhub-content-header'></div>"
-			    + "<div id='okhub-content-tabs'></div>"
-			    + "<div id='okhub-content'></div>"
-			    + "<a href='#' id='okhub-close'>X</a>"
-			    + "</div></div>";
-			    var stru = "<div id='open-knowledge-hub-widget-inner'>"
-				    + "<div id='open-knowledge-hub-widget-header'></div>"
-				    + "<div id='open-knowledge-hub-widget-content'></div>"
-				    + "<div id='open-knowledge-hub-widget-footer'></div>"
-				  + "</div>";
-			    $('#open-knowledge-hub-widget').html(stru);
-			    $('body').append(modal_html);
-			    $('#okhub-overlay').hide();
-			    $('#okhub-modal').hide();
-			    if (params.widget_title === undefined) {
-				params.widget_title = "Development Resources";
-			    }
-			    var header = "<h3>"
-				    + params.widget_title
-				    + "</h3><input type='text' name='okhub_search' placeholder='Search OKhub'>"
-				    + "<input type='hidden' name='okhub_token_guid' value="
-				    + params._token_guid + ">";
-			    $('#open-knowledge-hub-widget-header').html(header);
-			    $('input[name=okhub_search]')
-				    .keypress(
-					    function(e) {
-						var key = e.which;
-						if (key == 13) {
-						    var okhub_search = $(
-							    'input[name=okhub_search]')
-							    .val();
-						    var okhubguid = $(
-							    'input[name=okhub_token_guid]')
-							    .val();
-						    hub_search(okhub_search,
-							    okhubguid);
-						}
-					    });
-			    /* displays search results */
-			    if (params.type == "search") {
-				params.start_offset = 0;
-				hub_navigate(params);
-			    }
+			function($) { 
+    			    var scr = getScriptUrl();
+    			    var params = getQueryParameters(scr);
+    			    
+    			    /** ***** Load HTML ****** */
+    			    if(!$('#okhub-overlay').length){
+            			    var modal_html = "<div id='okhub-overlay'></div>"	
+            			    + "<div id='okhub-modal'><div id='okhub-modal-inner'>"
+            			    + "<div id='okhub-content-header'></div>"
+            			    + "<div id='okhub-content-tabs'></div>"
+            			    + "<div id='okhub-content'></div>"
+            			    + "<a href='#' id='okhub-close'>X</a>"
+            			    + "</div></div>";
+            			    $('body').append(modal_html);
+    			    }
+    			    var stru = "<div id='open-knowledge-hub-widget-inner'>"
+    				    + "<div id='open-knowledge-hub-widget-header'></div>"
+    				    + "<div id='open-knowledge-hub-widget-content'></div>"
+    				    + "<div id='open-knowledge-hub-widget-footer'></div>"
+    				  + "</div>";
+    			    $('#open-knowledge-hub-widget').html(stru);
+    			    
+    			    okhub_clear_contents();
+    			    if (params.widget_title === undefined) {
+    				params.widget_title = "Development Resources";
+    			    }
+    			    var header = "<h3>"
+    				    + params.widget_title
+    				    + "</h3><input type='text' name='okhub_search' placeholder='Search OKhub'>"
+    				    + "<input type='hidden' name='okhub_token_guid' value="
+    				    + params._token_guid + ">";
+    			    $('#open-knowledge-hub-widget-header').html(header);
+    			    $('input[name=okhub_search]')
+    				    .keypress(
+    					    function(e) {
+    						var key = e.which;
+    						if (key == 13) {
+    						    var okhub_search = $(
+    							    'input[name=okhub_search]')
+    							    .val();
+    						    var okhubguid = $(
+    							    'input[name=okhub_token_guid]')
+    							    .val();
+    						    hub_search(okhub_search,
+    							    okhubguid);
+    						}
+    					    });
+    			    /* displays search results */
+    			    if (params.type == "search") {
+    				params.start_offset = 0;
+    				hub_navigate(params);
+    			    }
 			});
     }
 
