@@ -48,15 +48,14 @@ $(document).ready(function(){
 		}
 		if ( $("input[name=text_color").val() !== "") {
 			customcolor = $("input[name=text_color").val();
-			customstyles += ' #open-knowledge-hub-widget { color: ' + customcolor + '; } ';
+			customstyles += ' #open-knowledge-hub-widget, #open-knowledge-hub-widget a { color: ' + customcolor + '; } ';
 		}	
 		url = url + urlparams;
 		url2 = url2 + urlparams;
 		
+		$('.widgetcustomstyles').remove();
 		if(customstyles) {
 			customstyles = '<style class="widgetcustomstyles">' + customstyles + '</style>';
-		} else {
-			$('.widgetcustomstyles').remove();
 		}
 		
 		$("#results1").val("");
