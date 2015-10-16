@@ -3,9 +3,7 @@
 	<head>
 		<title>OKhub Web Widget Customisation</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="lib/tokenize/jquery.tokenize.js"></script>
 		<link href="lib/tokenize/jquery.tokenize.css" rel="stylesheet" type="text/css">	
 		<link href="http://www.okhub.org/static/globalnav.css" rel="stylesheet" type="text/css">
@@ -38,7 +36,6 @@
 		?>
 		</script>
 		<script type="text/javascript" src="js/widgetadmin.js"></script>
-		<script type="text/javascript" src="js/jquery.select-to-autocomplete.js"></script>
 		<script type="text/javascript" src="js/countryselect.js"></script>
 	</head>
 	<body>
