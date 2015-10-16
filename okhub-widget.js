@@ -152,7 +152,7 @@
 					if (params.theme != undefined) {
 					    searchfeedbacktext += ' with the theme ' + params.theme;
 					}
-					searchfeedbacktext = " search results for " + searchfeedbacktext;
+					searchfeedbacktext = " search results for " + searchfeedbacktext.replace(/\|/g, " OR ");
 				} else {
 				    searchfeedbacktext = " search results";
 				}

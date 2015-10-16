@@ -10,7 +10,6 @@ $(document).ready(function(){
 		if($("input[name=apikey]").val() == "" && $(this).attr('name') == "apikeysubmit"){
 			alert("Please enter you API key");
 		}
-		
 		apikey=$("input[name=apikey]").val();
 		url = jsurl + "&_token_guid="+apikey;	
 		url2 = jsurl + "&_token_guid="+demoapikey;	
@@ -26,7 +25,14 @@ $(document).ready(function(){
 		}
 		if ( $("select[name=country]").val() !== "" && $("select[name=country]").val() != undefined && $("select[name=country]").val() != "undefined") {
 			q = $("select[name=country]").val();
-			urlparams = urlparams +"&country="+q;
+			countriesParamStr = '';
+			for(i in q){
+			    if(countriesParamStr){
+				countriesParamStr += '|';
+			    }
+			    countriesParamStr += q[i];
+			}
+			urlparams = urlparams +"&country="+countriesParamStr;
 		}
 		if ( $("input[name=theme]").val() !== "") {
 			q = $("input[name=theme]").val();

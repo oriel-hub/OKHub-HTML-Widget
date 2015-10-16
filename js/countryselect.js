@@ -8,10 +8,9 @@ $(document).ready(
 				}
 				if(country_options){
 					$("input[name=country]").replaceWith(
-							'<select id="country" name="country" placeholder="Country/Region e.g. India">'
+							'<select id="country" name="country" placeholder="Country/Region e.g. India" multiple="multiple">'
 									+ country_options + '</select>');
-					$('#country').selectToAutocomplete();
-					/*$('#country').tokenize();*/
+					$('#country').tokenize();
 				}
 
 		});
