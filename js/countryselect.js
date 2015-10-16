@@ -7,10 +7,13 @@ $(document).ready(
 							+ hub_countries_array[i] + '</option>';
 				}
 				if(country_options){
+				    	var placeholdertext = $("input[name=country]").attr('placeholder');
 					$("input[name=country]").replaceWith(
-							'<select id="country" name="country" placeholder="Country/Region e.g. India" multiple="multiple">'
+							'<select id="country" name="country" placeholder="' + placeholdertext + '" multiple="multiple">'
 									+ country_options + '</select>');
-					$('#country').tokenize();
+					$('#country').tokenize({
+						placeholder: placeholdertext
+					});
 				}
 
 		});

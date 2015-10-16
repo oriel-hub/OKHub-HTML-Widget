@@ -111,3 +111,6 @@ div.Tokenize ul.TokensContainer {
 div.Tokenize ul.TokensContainer li.TokenSearch input {
 	height:auto;
 }
+div.Tokenize ul.TokensContainer li.Placeholder {
+	color:#aaa;
+}

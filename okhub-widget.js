@@ -144,15 +144,15 @@
 				if (params.q != undefined || params.country != undefined || params.theme != undefined) {
 				    searchfeedbacktext = '';
 				    	if (params.q != undefined) {
-				    	    searchfeedbacktext += params.q;
+				    	    searchfeedbacktext += ' for ' + params.q;
 				    	}
 					if (params.country != undefined) {
-					    searchfeedbacktext += ' in ' + params.country;
+					    searchfeedbacktext += ' in ' + capitalize(params.country);
 					}
 					if (params.theme != undefined) {
 					    searchfeedbacktext += ' with the theme ' + params.theme;
 					}
-					searchfeedbacktext = " search results for " + searchfeedbacktext.replace(/\|/g, " OR ");
+					searchfeedbacktext = " search results" + searchfeedbacktext.replace(/\|/g, " OR ");
 				} else {
 				    searchfeedbacktext = " search results";
 				}
@@ -497,5 +497,10 @@
     			    }
 			});
     }
+    
+    function capitalize(s){
+	    return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
+	};
+
 
 })();
