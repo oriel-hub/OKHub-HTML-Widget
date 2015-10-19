@@ -179,3 +179,13 @@
 #okhub-content-header-inner {
 	padding-top:1em;
 }
+
+.okhub-source-logo {
+	width:25%;
+}
+
+.okhub-source-logo {
+	float:right; 
+	display:block;
+	margin:0 0 5px 10px;	
+}

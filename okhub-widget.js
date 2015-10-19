@@ -271,8 +271,10 @@
 							    sources_tabs += ' selected';
 							}
 							sources_tabs += "'>"
-								+ "<a href='#'>"
-								+ sourcesData[i]
+								+ "<a href='#'" 
+								+ " title='" + sourcesData[i].description_clean + "'"
+								+ ">"
+								+ sourcesData[i].name
 								+ "</a></li> ";
 						    }
 						    sources_tabs = "<ul class='okhub_sources'>"
@@ -363,10 +365,15 @@
 									    if (!description) {
 										description = '';
 									    }
+									    var sourceLogo = '';
+									    if(sourcesData[k].logo_url){
+										sourceLogo = "<img title='" + sourcesData[k].description_clean + "' class='okhub-source-logo' src='" + sourcesData[k].logo_url + "' alt='" + sourcesData[k].name + " logo'/>";
+									    }
 									    jQuery(
 										    '#okhub-content')
 										    .html(
 											    "<div class='abstract-text'>"
+											    	    + sourceLogo
 												    + description
 												    + "</div>"
 												    + "<div class='full-doc-links'>"
