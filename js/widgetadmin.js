@@ -15,6 +15,7 @@ $(document).ready(function(){
 		url2 = jsurl + "&_token_guid="+demoapikey;	
 		urlparams = '';
 		customstyles = '';
+		customstylesjs = '';
 		if ( $("input[name=q]").val() !== "") {
 			q = $("input[name=q]").val();
 			urlparams = urlparams +"&q="+q;
@@ -54,12 +55,33 @@ $(document).ready(function(){
 		url2 = url2 + urlparams;
 		
 		$('.widgetcustomstyles').remove();
+		$('#okhub-widget-css-extras').remove();
+		$('#okhub-widget-css-extras-script').remove();
 		if(customstyles) {
-			customstyles = '<style class="widgetcustomstyles">' + customstyles + '</style>';
+		    /* following used to show css extras for widget on remote sites */
+		    customstylesjs = "// <![CDATA[";
+		    customstylesjs += "\n";
+		    customstylesjs += "var head  = document.getElementsByTagName('head')[0];";
+		    customstylesjs += "var widgetCssExtrasId = 'okhub-widget-css-extras';";
+		    customstylesjs += "if (!document.getElementById(widgetCssExtrasId))";
+		    customstylesjs += "{";
+		    customstylesjs += "var head  = document.getElementsByTagName('head')[0];";
+		    customstylesjs += "var okhubcssextraslink  = document.createElement('style');";
+		    customstylesjs += "okhubcssextraslink.id   = widgetCssExtrasId;";
+		    customstylesjs += "okhubcssextraslink.type = 'text/css';";
+	            customstylesjs += "okhubcssextraslink.media = 'all';";
+	            customstylesjs += "okhubcssextraslink.innerHTML = '" + customstyles + "';";
+	            customstylesjs += "head.appendChild(okhubcssextraslink);";
+	            customstylesjs += "}";
+	            customstylesjs += "\n";
+	            customstylesjs += "// ]]>";
+	            customstylesjs = '<script class="okhub-widget-css-extras-script" type="text\/javascript">' + customstylesjs + '</script>';
+	            /* following code to show css extras on local demo */
+	            customstyles = '<style class="widgetcustomstyles">' + customstyles + '</style>';
 		}
 		
 		$("#results1").val("");
-		$("#results1").val(customstyles + '<script class="okhub-widget-script" src="' + url + '" type="text\/javascript"><\/script><div id="open-knowledge-hub-widget"><\/div>');
+		$("#results1").val('<script class="okhub-widget-script" src="' + url + '" type="text\/javascript"><\/script>' + customstylesjs + '<div id="open-knowledge-hub-widget"><\/div>');
 		$("#dynamic-demo-hub-widget script").each(function(){
 			$(this).attr('src', url2);
 		});
