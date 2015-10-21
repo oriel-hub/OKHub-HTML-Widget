@@ -1,7 +1,10 @@
 (function() {
     /* encodeURIComponent(window.location.href) */
     var jQuery;
-    var okhub_wrapper_api_url = "http://data.okhub.org/apps/widget/api/";
+    if(okhub_widget_url === undefined){
+	var okhub_widget_url = "http://data.okhub.org/apps/widget/"; 
+    }
+    var okhub_wrapper_api_url = okhub_widget_url + "api/";
     /** ****** Load jQuery if not present ******** */
     if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
 	var script_tag = document.createElement('script');

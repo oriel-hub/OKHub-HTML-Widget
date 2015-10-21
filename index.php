@@ -13,7 +13,7 @@
 		<link href="okhub-widget.css" rel="stylesheet" type="text/css">
 		<link href="css/widgetadmin.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
-			var okhub_wrapper_url = '<?php 
+			var okhub_widget_url = '<?php 
 			$widget_url = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 			echo $widget_url;
 			?>';
