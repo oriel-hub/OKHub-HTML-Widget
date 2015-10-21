@@ -5,6 +5,19 @@
 	var okhub_widget_url = "http://data.okhub.org/apps/widget/"; 
     }
     var okhub_wrapper_api_url = okhub_widget_url + "api/";
+    /** ****** load the widget stylesheet  ******** */
+    var widgetCssId = 'okhub-widget-css';
+    if (!document.getElementById(widgetCssId))
+    {
+        var head  = document.getElementsByTagName('head')[0];
+        var okhubcsslink  = document.createElement('link');
+        okhubcsslink.id   = widgetCssId;
+        okhubcsslink.rel  = 'stylesheet';
+        okhubcsslink.type = 'text/css';
+        okhubcsslink.href = okhub_widget_url + 'okhub-widget.css';
+        okhubcsslink.media = 'all';
+        head.appendChild(okhubcsslink);
+    }
     /** ****** Load jQuery if not present ******** */
     if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
 	var script_tag = document.createElement('script');

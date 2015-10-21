@@ -10,7 +10,6 @@
 		<link href="http://explorer.okhub.org/css/main.css" rel="stylesheet" type="text/css">
 		
 		<link href="http://data.okhub.org/sites/all/themes/skeletontheme/css/style.css" rel="stylesheet" type="text/css">
-		<link href="okhub-widget.css" rel="stylesheet" type="text/css">
 		<link href="css/widgetadmin.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
 			var okhub_widget_url = '<?php 
