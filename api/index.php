@@ -7,6 +7,9 @@ if (isset($_GET['q'])){
 if (isset($_GET['country'])){
 	$params['country'] = $_GET['country'];	
 }
+if (isset($_GET['region'])){
+	$params['region'] = $_GET['region'];	
+}
 if (isset($_GET['theme'])){
 	$params['theme'] = $_GET['theme'];	
 }

@@ -35,6 +35,21 @@ $(document).ready(function(){
 			}
 			urlparams = urlparams +"&country="+countriesParamStr;
 		}
+		if ( $("input[name=region]").val() !== "" && $("input[name=region]").val() != undefined && $("input[name=region]").val() != "undefined") {
+			q = $("input[name=country]").val();
+			urlparams = urlparams +"&country="+q;
+		}
+		if ( $("select[name=region]").val() !== "" && $("select[name=region]").val() != undefined && $("select[name=region]").val() != "undefined") {
+			q = $("select[name=region]").val();
+			regionsParamStr = '';
+			for(i in q){
+			    if(regionsParamStr){
+				regionsParamStr += '|';
+			    }
+			    regionsParamStr += q[i];
+			}
+			urlparams = urlparams +"&region="+regionsParamStr;
+		}
 		if ( $("input[name=theme]").val() !== "") {
 			q = $("input[name=theme]").val();
 			urlparams = urlparams +"&theme="+q;

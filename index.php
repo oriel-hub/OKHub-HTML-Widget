@@ -22,16 +22,27 @@
 		require_once('wrapper/okhubwrapper.wrapper.inc');
 		$demo_api_key = '5c96d95b-c729-4624-b1c2-14c6b98dc9ce';
 		$okhubapi = new OkhubApiWrapper;
+		/* Get all countries in dataset*/
 		$countries_options = $okhubapi->count('documents', 'hub', $demo_api_key, 'country', 0, array());
-		//print_r($countries_options);
 		$hub_countries_array = array();
 		foreach($countries_options->results as $country_obj){
 			$country_name = $country_obj->hub_data['object_name'];
 			$hub_countries_array[$country_name] = ucwords($country_name);
-		}		
-		$js_array = json_encode($hub_countries_array);
+		}	
+		/* Get all regions in dataset*/
+		$regions_options = $okhubapi->count('documents', 'hub', $demo_api_key, 'region', 0, array());
+		$hub_regions_array = array();
+		foreach($regions_options->results as $region_obj){
+			if(isset($region_obj->hub_data['object_name'])){
+				$region_name = $region_obj->hub_data['object_name'];
+				$hub_regions_array[$region_name] = ucwords($region_name);
+			}
+		}	
+		$hub_countries_js_array = json_encode($hub_countries_array);
+		$hub_regions_js_array = json_encode($hub_regions_array);
 		echo "var demoapikey = '$demo_api_key';\n";
-		echo "var hub_countries_array = ". $js_array . ";\n";
+		echo "var hub_countries_array = ". $hub_countries_js_array . ";\n";
+		echo "var hub_regions_array = ". $hub_regions_js_array . ";\n";
 		?>
 		</script>
 		<script type="text/javascript" src="js/widgetadmin.js"></script>
@@ -44,7 +55,7 @@
 		<div id="okhub-widget">
 
 			<div id="dynamic-demo-hub-widget">
-				<script class="okhub-widget-script" src="<?php echo $widget_url; ?>okhub-widget.js?type=search&_token_guid=50ae9726-efa9-4b40-a623-85823df5aac2" type="text/javascript"></script>
+				<script class="okhub-widget-script" src="<?php echo $widget_url; ?>okhub-widget.js?type=search&_token_guid=<?php echo $demo_api_key; ?>" type="text/javascript"></script>
 				<div id="open-knowledge-hub-widget">Sample Widget</div>
 			</div>
 			<div id="open-knowledge-hub-widget-main-container">
@@ -66,7 +77,11 @@
 	
 							style="" /></div>  
 						<div class="form-item"><input type="text"
-							name="country" placeholder="Country/Region e.g. India"
+							name="country" placeholder="Country e.g. India"
+	
+							style="" /></div> 
+						<div class="form-item"><input type="text"
+							name="region" placeholder="Region e.g. Caribbean"
 	
 							style="" /></div> 
 						<div class="form-item"><input type="text"

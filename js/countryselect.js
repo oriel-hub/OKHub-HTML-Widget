@@ -15,5 +15,21 @@ $(document).ready(
 						placeholder: placeholdertext
 					});
 				}
+				
+				var region_options = '';
+				region_options += '<option value=""></option>';
+				for (i in hub_regions_array) {
+					region_options += '<option value="' + i + '">'
+							+ hub_regions_array[i] + '</option>';
+				}
+				if(region_options){
+				    	var placeholdertext = $("input[name=region]").attr('placeholder');
+					$("input[name=region]").replaceWith(
+							'<select id="region" name="region" placeholder="' + placeholdertext + '" multiple="multiple">'
+									+ region_options + '</select>');
+					$('#region').tokenize({
+						placeholder: placeholdertext
+					});
+				}
 
 		});

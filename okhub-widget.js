@@ -91,6 +91,9 @@
 	if (params.country !== undefined) {
 	    p.push("country=" + params.country);
 	}
+	if (params.region !== undefined) {
+	    p.push("region=" + params.region);
+	}
 	if (params.theme !== undefined) {
 	    p.push("theme=" + params.theme);
 	}
@@ -157,13 +160,19 @@
 					+ "<div class='okhub-widget-logo-link'><a href='http://www.okhub.org' target='_blank'><img src='http://data.okhub.org/apps/widget/images/okhub-logo200.png'/></a></div>";
 
 				var searchfeedbacktext = '';
-				if (params.q != undefined || params.country != undefined || params.theme != undefined) {
+				if (params.q != undefined || params.country != undefined || params.region != undefined || params.theme != undefined) {
 				    searchfeedbacktext = '';
 				    	if (params.q != undefined) {
 				    	    searchfeedbacktext += ' for ' + params.q;
 				    	}
 					if (params.country != undefined) {
 					    searchfeedbacktext += ' in ' + capitalize(params.country);
+					}
+					if (params.region != undefined) {
+					    if (params.country != undefined) {
+						searchfeedbacktext += ' and ';
+					    }
+					    searchfeedbacktext += ' in ' + capitalize(params.region);
 					}
 					if (params.theme != undefined) {
 					    searchfeedbacktext += ' with the theme ' + params.theme;
@@ -252,7 +261,7 @@
 	var output = "";
 	var sources_tabs = "";
 	var metadata_url = "";
-	var title, author, description, url, hub_country, hubcountry = "";
+	var title, author, description, url, hub_country, hub_region, hubcountry = "", hubregion = "";
 	var eldis_theme, observaction_theme = "";
 	jQuery('#okhub-overlay').show();
 	jQuery
