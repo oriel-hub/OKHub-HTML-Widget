@@ -235,9 +235,12 @@
     }
 
     function hub_search(param, token_guid) {
-	var params = {};
-	params._token_guid = token_guid;
-	params.q = param;
+	//var params = {};
+	//params._token_guid = token_guid;
+	/* we don't want to lose the widget configured options so get them first */
+	    var scr = getScriptUrl();
+	    var params = getQueryParameters(scr);
+	params.q = param; /* overwite the free text with the new selection */
 	params.start_offset = 0;
 	jQuery('#open-knowledge-hub-widget-content').html(
 		"<div class='okhub-widget-message'>Searching ....</div>");
